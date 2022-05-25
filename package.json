@@ -3,6 +3,7 @@
   "displayName": "Command Shelf",
   "description": "A vscode extension to store and execute command.",
   "version": "0.0.1",
+  "publisher": "ljtang2009",
   "engines": {
     "vscode": "^1.67.0"
   },
