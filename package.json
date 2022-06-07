@@ -11,16 +11,108 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:command-shelf.helloWorld"
+    "onView:commandShelf",
+    "onCommand:commandShelf.addGroup",
+    "onCommand:commandShelf.addCommand",
+    "onCommand:commandShelf.refresh"
   ],
-  "main": "./extension.js",
+  "main": "./src/extension.js",
   "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "commandShelf",
+          "name": "%commandShelf.activitybar.title%",
+          "icon": "./resources/icon/logo.svg",
+          "contextualTitle": "%commandShelf.activitybar.title%"
+        }
+      ]
+    },
     "commands": [
       {
-        "command": "command-shelf.helloWorld",
-        "title": "Hello World"
+        "command": "commandShelf.addGroup",
+        "title": "%commandShelf.command.addGroup%",
+        "category": "Command Shelf",
+        "icon": {
+          "light": "./resources/icon/light/addFolder.svg",
+          "dark": "./resources/icon/dark/addFolder.svg"
+        }
+      },
+      {
+        "command": "commandShelf.addCommand",
+        "title": "%commandShelf.command.addCommand%",
+        "category": "Command Shelf",
+        "icon": {
+          "light": "./resources/icon/light/addFile.svg",
+          "dark": "./resources/icon/dark/addFile.svg"
+        }
+      },
+      {
+        "command": "commandShelf.refresh",
+        "title": "%commandShelf.command.refresh%",
+        "icon": {
+          "light": "./resources/icon/light/refresh.svg",
+          "dark": "./resources/icon/dark/refresh.svg"
+        }
+      },
+      {
+        "command": "commandShelf.renameGroup",
+        "title": "%commandShelf.command.Rename%",
+        "icon": {
+          "light": "resources/icon/light/rename.svg",
+          "dark": "resources/icon/dark/rename.svg"
+        }
+      },
+      {
+        "command": "commandShelf.remove",
+        "title": "%commandShelf.command.Remove%",
+        "icon": {
+          "light": "resources/icon/light/remove.svg",
+          "dark": "resources/icon/dark/remove.svg"
+        }
       }
-    ]
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "commandShelf.addGroup",
+          "when": "view == commandShelf",
+          "group": "navigation@0"
+        },
+        {
+          "command": "commandShelf.addCommand",
+          "when": "view == commandShelf",
+          "group": "navigation@1"
+        },
+        {
+          "command": "commandShelf.refresh",
+          "when": "view == commandShelf",
+          "group": "navigation@2"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "commandShelf.addGroup",
+          "when": "view == commandShelf && viewItem == group",
+          "group": "inline@0"
+        },
+        {
+          "command": "commandShelf.addCommand",
+          "when": "view == commandShelf && viewItem == group",
+          "group": "inline@1"
+        },
+        {
+          "command": "commandShelf.renameGroup",
+          "when": "view == commandShelf && viewItem == group",
+          "group": "inline@2"
+        },
+        {
+          "command": "commandShelf.remove",
+          "when": "view == commandShelf",
+          "group": "inline@3"
+        }
+      ]
+    }
   },
   "scripts": {
     "lint": "eslint .",
@@ -38,5 +130,9 @@
     "glob": "^8.0.1",
     "mocha": "^9.2.2",
     "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "@sindresorhus/is": "^4.6.0",
+    "uuid": "^8.3.2"
   }
 }
