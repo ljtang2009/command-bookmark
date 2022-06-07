@@ -6,4 +6,5 @@ module.exports = {
   vueIndentScriptAndStyle: true,
   semi: false,
   quoteProps: 'consistent',
+  arrowParens: 'avoid',
 }
