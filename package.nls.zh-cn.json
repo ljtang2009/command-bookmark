@@ -1,0 +1,19 @@
+{
+  "commandShelf.activitybar.title": "命令库",
+
+  "commandShelf.command.addGroup": "添加分组",
+  "commandShelf.command.addCommand": "添加命令",
+  "commandShelf.command.refresh": "刷新",
+  "commandShelf.command.Rename": "重命名",
+  "commandShelf.command.Remove": "移除",
+
+  "commandShelf.inputBox.title.addGroup": "添加分组",
+  "commandShelf.inputBox.placeHolder.inputGroupName": "输入分组名称.",
+  "commandShelf.inputBox.validateInput.requireGroupName": "分组名称不能为空.",
+  "commandShelf.inputBox.messageItem.title.remove": "移除",
+  "commandShelf.inputBox.messageItem.message.remove": "移除此",
+  "commandShelf.inputBox.messageItem.message.group": "分组",
+  "commandShelf.inputBox.messageItem.message.command": "命令",
+
+  "commandShelf.punctuation.question": "？"
+}
