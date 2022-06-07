@@ -1,40 +1,138 @@
 {
   "name": "command-shelf",
-	"displayName": "Command Shelf",
-	"description": "A vscode extension to store and execute command.",
-	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.67.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-        "onCommand:command-shelf.helloWorld"
-	],
-	"main": "./extension.js",
-	"contributes": {
-		"commands": [{
-            "command": "command-shelf.helloWorld",
-            "title": "Hello World"
-
-		}]
-	},
-	"scripts": {
-		"lint": "eslint .",
-		"pretest": "npm run lint",
-		"test": "node ./test/runTest.js"
-	},
-	"devDependencies": {
-        "@types/vscode": "^1.67.0",
-        "@types/glob": "^7.2.0",
-        "@types/mocha": "^9.1.1",
-        "@types/node": "14.x",
-        "eslint": "^8.14.0",
-        "glob": "^8.0.1",
-        "mocha": "^9.2.2",
-        "typescript": "^4.6.4",
-        "@vscode/test-electron": "^2.1.3"
+  "displayName": "Command Shelf",
+  "description": "A vscode extension to store and execute command.",
+  "version": "0.0.1",
+  "publisher": "ljtang2009",
+  "engines": {
+    "vscode": "^1.67.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:commandShelf",
+    "onCommand:commandShelf.addGroup",
+    "onCommand:commandShelf.addCommand",
+    "onCommand:commandShelf.refresh"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "commandShelf",
+          "name": "%commandShelf.activitybar.title%",
+          "icon": "./resources/icon/logo.svg",
+          "contextualTitle": "%commandShelf.activitybar.title%"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "commandShelf.addGroup",
+        "title": "%commandShelf.command.addGroup%",
+        "category": "Command Shelf",
+        "icon": {
+          "light": "./resources/icon/light/addFolder.svg",
+          "dark": "./resources/icon/dark/addFolder.svg"
+        }
+      },
+      {
+        "command": "commandShelf.addCommand",
+        "title": "%commandShelf.command.addCommand%",
+        "category": "Command Shelf",
+        "icon": {
+          "light": "./resources/icon/light/addFile.svg",
+          "dark": "./resources/icon/dark/addFile.svg"
+        }
+      },
+      {
+        "command": "commandShelf.refresh",
+        "title": "%commandShelf.command.refresh%",
+        "icon": {
+          "light": "./resources/icon/light/refresh.svg",
+          "dark": "./resources/icon/dark/refresh.svg"
+        }
+      },
+      {
+        "command": "commandShelf.renameGroup",
+        "title": "%commandShelf.command.Rename%",
+        "icon": {
+          "light": "resources/icon/light/rename.svg",
+          "dark": "resources/icon/dark/rename.svg"
+        }
+      },
+      {
+        "command": "commandShelf.remove",
+        "title": "%commandShelf.command.Remove%",
+        "icon": {
+          "light": "resources/icon/light/remove.svg",
+          "dark": "resources/icon/dark/remove.svg"
+        }
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "commandShelf.addGroup",
+          "when": "view == commandShelf",
+          "group": "navigation@0"
+        },
+        {
+          "command": "commandShelf.addCommand",
+          "when": "view == commandShelf",
+          "group": "navigation@1"
+        },
+        {
+          "command": "commandShelf.refresh",
+          "when": "view == commandShelf",
+          "group": "navigation@2"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "commandShelf.addGroup",
+          "when": "view == commandShelf && viewItem == group",
+          "group": "inline@0"
+        },
+        {
+          "command": "commandShelf.addCommand",
+          "when": "view == commandShelf && viewItem == group",
+          "group": "inline@1"
+        },
+        {
+          "command": "commandShelf.renameGroup",
+          "when": "view == commandShelf && viewItem == group",
+          "group": "inline@2"
+        },
+        {
+          "command": "commandShelf.remove",
+          "when": "view == commandShelf",
+          "group": "inline@3"
+        }
+      ]
     }
-
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.67.0",
+    "@vscode/test-electron": "^2.1.3",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "glob": "^8.0.1",
+    "mocha": "^9.2.2",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "@sindresorhus/is": "^4.6.0",
+    "uuid": "^8.3.2"
+  }
 }

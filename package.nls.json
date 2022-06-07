@@ -1,0 +1,19 @@
+{
+  "commandShelf.activitybar.title": "Command Shelf",
+
+  "commandShelf.command.addGroup": "Add Group",
+  "commandShelf.command.addCommand": "Add Command",
+  "commandShelf.command.refresh": "Refresh",
+  "commandShelf.command.Rename": "Rename",
+  "commandShelf.command.Remove": "Remove",
+
+  "commandShelf.inputBox.title.addGroup": "Add Group",
+  "commandShelf.inputBox.placeHolder.inputGroupName": "Input group name.",
+  "commandShelf.inputBox.validateInput.requireGroupName": "Require group name.",
+  "commandShelf.inputBox.messageItem.title.remove": "Remove",
+  "commandShelf.inputBox.messageItem.message.remove": "Remove this ",
+  "commandShelf.inputBox.messageItem.message.group": "group",
+  "commandShelf.inputBox.messageItem.message.command": "command",
+
+  "commandShelf.punctuation.question": "?"
+}
