@@ -62,7 +62,10 @@ module.exports = {
     /* #endregion */
 
     /* #region Suggestions */
-    'arrow-body-style': ['error', 'as-needed'],
+    'arrow-body-style': [
+      process.env.NODE_ENV === 'production' ? 'error' : 'off',
+      'as-needed',
+    ],
     'block-scoped-var': ['error'],
     'camelcase': ['error'],
     'default-case-last': ['warn'],
@@ -73,6 +76,7 @@ module.exports = {
     'guard-for-in': ['warn'],
     'no-alert': [process.env.NODE_ENV === 'production' ? 'error' : 'off'],
     'no-console': [process.env.NODE_ENV === 'production' ? 'error' : 'off'],
+    'no-debugger': [process.env.NODE_ENV === 'production' ? 'error' : 'off'],
     'no-continue': ['warn'],
     'no-empty-function': ['warn'],
     'no-eq-null': ['error'],
@@ -89,7 +93,9 @@ module.exports = {
     'no-unneeded-ternary': ['error'],
     'no-useless-rename': ['error'],
     'no-var': ['warn'],
-    'no-warning-comments': ['warn'],
+    'no-warning-comments': [
+      process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    ],
     'prefer-const': ['warn'],
     'prefer-template': ['warn'],
     'quote-props': ['error', 'consistent'],
@@ -130,7 +136,7 @@ module.exports = {
     'no-multiple-empty-lines': ['error'],
     'no-trailing-spaces': ['warn'],
     'no-whitespace-before-property': ['error'],
-    'quotes': ['error', 'single'],
+    'quotes': ['error', 'single', { avoidEscape: true }],
     'rest-spread-spacing': ['warn'],
     'semi': ['error', 'never'],
     'semi-spacing': ['error'],
