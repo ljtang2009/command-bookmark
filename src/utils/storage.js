@@ -71,7 +71,7 @@ function getChildren(context, parentElement, type) {
   let result = []
   const storage = context.globalState.get(extensionNameSpace)
   if (!is.undefined(storage)) {
-    if (is.undefined(parentElement)) {
+    if (is.nullOrUndefined(parentElement)) {
       // Get 1st level children.
       result = storage
     } else {

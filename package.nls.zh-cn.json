@@ -1,7 +1,7 @@
 {
   "commandBookmark.activitybar.title": "命令书签",
 
-  "commandBookmark.command.addGroup": "添加分组",
+  "commandBookmark.command.addFolder": "添加文件夹",
   "commandBookmark.command.addCommand": "添加命令",
   "commandBookmark.command.refresh": "刷新",
   "commandBookmark.command.Rename": "重命名",
@@ -9,14 +9,14 @@
   "commandBookmark.command.editCommand": "编辑命令",
   "commandBookmark.command.runCommand": "运行命令",
 
-  "commandBookmark.inputBox.title.addGroup": "添加分组",
-  "commandBookmark.inputBox.placeHolder.inputGroupName": "输入分组名称.",
-  "commandBookmark.inputBox.validateInput.requireGroupName": "分组名称不能为空.",
+  "commandBookmark.inputBox.title.addFolder": "添加文件夹",
+  "commandBookmark.inputBox.placeHolder.inputFolderName": "输入文件夹名称.",
+  "commandBookmark.inputBox.validateInput.requireFolderName": "文件夹名称不能为空.",
   "commandBookmark.inputBox.validateInput.sameNodeName": "不能与其他同级节点重名",
 
   "commandBookmark.inputBox.messageItem.title.remove": "移除",
   "commandBookmark.inputBox.messageItem.message.remove": "移除此",
-  "commandBookmark.inputBox.messageItem.message.group": "分组",
+  "commandBookmark.inputBox.messageItem.message.folder": "文件夹",
   "commandBookmark.inputBox.messageItem.message.command": "命令",
 
   "commandBookmark.inputBox.title.addCommand": "添加命令",
@@ -31,5 +31,5 @@
 
   "commandBookmark.punctuation.question": "？",
 
-  "commandBookmark.viewsWelcome.intro": "欢迎使用命令库。"
+  "commandBookmark.viewsWelcome.intro": "欢迎使用命令书签。"
 }

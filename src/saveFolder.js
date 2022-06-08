@@ -12,19 +12,19 @@ const i18n = require('./utils/i18n')
  */
 async function showInputBox(defaultValue, siblings) {
   const placeHolder = i18n.localize(
-    'commandBookmark.inputBox.placeHolder.inputGroupName'
+    'commandBookmark.inputBox.placeHolder.inputFolderName'
   )
   let result = await vscode.window.showInputBox({
     ignoreFocusOut: true,
     prompt: placeHolder,
     value: defaultValue,
-    title: i18n.localize('commandBookmark.inputBox.title.addGroup'),
+    title: i18n.localize('commandBookmark.inputBox.title.addFolder'),
     placeHolder: placeHolder,
     validateInput: text => {
       let validateResult
       if (is.undefined(text) || is.emptyStringOrWhitespace(text)) {
         validateResult = i18n.localize(
-          'commandBookmark.inputBox.validateInput.requireGroupName'
+          'commandBookmark.inputBox.validateInput.requireFolderName'
         )
       } else if (
         !is.nullOrUndefined(siblings) &&
@@ -45,17 +45,17 @@ async function showInputBox(defaultValue, siblings) {
 
 module.exports = async (context, parentElement, element) => {
   let newElement
-  const groupName = await showInputBox(
+  const folderName = await showInputBox(
     !is.nullOrUndefined(element) ? element.name : '',
     getChildren(context, parentElement)
   )
-  if (!is.undefined(groupName)) {
+  if (!is.undefined(folderName)) {
     newElement = {
-      type: treeViewItemType.group,
+      type: treeViewItemType.folder,
       collapsibleState: collapsibleStateEnums.collapsed,
       children: [],
       ...element,
-      name: groupName,
+      name: folderName,
     }
     await saveElement(context, parentElement, newElement)
   }

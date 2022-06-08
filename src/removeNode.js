@@ -8,8 +8,8 @@ module.exports = async (context, node) => {
   const messageStr = `${i18n.localize(
     'commandBookmark.inputBox.messageItem.message.remove'
   )}${i18n.localize(
-    node.type === treeViewItemType.group
-      ? 'commandBookmark.inputBox.messageItem.message.group'
+    node.type === treeViewItemType.folder
+      ? 'commandBookmark.inputBox.messageItem.message.folder'
       : 'commandBookmark.inputBox.messageItem.message.command'
   )}${i18n.localize('commandBookmark.punctuation.question')}`
   const messageResult = await vscode.window.showWarningMessage(

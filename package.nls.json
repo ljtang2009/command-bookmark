@@ -1,7 +1,7 @@
 {
   "commandBookmark.activitybar.title": "Command Bookmark",
 
-  "commandBookmark.command.addGroup": "Add Group",
+  "commandBookmark.command.addFolder": "Add Folder",
   "commandBookmark.command.addCommand": "Add Command",
   "commandBookmark.command.refresh": "Refresh",
   "commandBookmark.command.Rename": "Rename",
@@ -9,14 +9,14 @@
   "commandBookmark.command.editCommand": "Edit Command",
   "commandBookmark.command.runCommand": "Run Command",
 
-  "commandBookmark.inputBox.title.addGroup": "Add Group",
-  "commandBookmark.inputBox.placeHolder.inputGroupName": "Input group name.",
-  "commandBookmark.inputBox.validateInput.requireGroupName": "Require group name.",
+  "commandBookmark.inputBox.title.addFolder": "Add Folder",
+  "commandBookmark.inputBox.placeHolder.inputFolderName": "Input folder name.",
+  "commandBookmark.inputBox.validateInput.requireFolderName": "Require folder name.",
   "commandBookmark.inputBox.validateInput.sameNodeName": "Cannot have two siblings nodes with the same name.",
 
   "commandBookmark.inputBox.messageItem.title.remove": "Remove",
   "commandBookmark.inputBox.messageItem.message.remove": "Remove this ",
-  "commandBookmark.inputBox.messageItem.message.group": "group",
+  "commandBookmark.inputBox.messageItem.message.folder": "folder",
   "commandBookmark.inputBox.messageItem.message.command": "command",
 
   "commandBookmark.inputBox.title.addCommand": "Add Command",

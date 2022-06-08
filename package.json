@@ -13,7 +13,7 @@
   ],
   "activationEvents": [
     "onView:commandBookmark",
-    "onCommand:commandBookmark.addGroup",
+    "onCommand:commandBookmark.addFolder",
     "onCommand:commandBookmark.addCommand",
     "onCommand:commandBookmark.refresh"
   ],
@@ -31,8 +31,8 @@
     },
     "commands": [
       {
-        "command": "commandBookmark.addGroup",
-        "title": "%commandBookmark.command.addGroup%",
+        "command": "commandBookmark.addFolder",
+        "title": "%commandBookmark.command.addFolder%",
         "category": "Command Bookmark",
         "icon": {
           "light": "./resources/icon/light/addFolder.svg",
@@ -57,7 +57,7 @@
         }
       },
       {
-        "command": "commandBookmark.renameGroup",
+        "command": "commandBookmark.renameFolder",
         "title": "%commandBookmark.command.Rename%",
         "icon": {
           "light": "resources/icon/light/rename.svg",
@@ -92,7 +92,7 @@
     "menus": {
       "view/title": [
         {
-          "command": "commandBookmark.addGroup",
+          "command": "commandBookmark.addFolder",
           "when": "view == commandBookmark",
           "group": "navigation@0"
         },
@@ -109,18 +109,18 @@
       ],
       "view/item/context": [
         {
-          "command": "commandBookmark.addGroup",
-          "when": "view == commandBookmark && viewItem == group",
+          "command": "commandBookmark.addFolder",
+          "when": "view == commandBookmark && viewItem == folder",
           "group": "inline@0"
         },
         {
           "command": "commandBookmark.addCommand",
-          "when": "view == commandBookmark && viewItem == group",
+          "when": "view == commandBookmark && viewItem == folder",
           "group": "inline@1"
         },
         {
-          "command": "commandBookmark.renameGroup",
-          "when": "view == commandBookmark && viewItem == group",
+          "command": "commandBookmark.renameFolder",
+          "when": "view == commandBookmark && viewItem == folder",
           "group": "inline@2"
         },
         {
@@ -151,7 +151,7 @@
       },
       {
         "view": "commandBookmark",
-        "contents": "[Add group](command:commandBookmark.addGroup)"
+        "contents": "[Add folder](command:commandBookmark.addFolder)"
       }
     ]
   },

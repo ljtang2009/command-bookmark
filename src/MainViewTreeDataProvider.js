@@ -25,7 +25,7 @@ class MainViewTreeDataProvider {
     const label = element.name
     let tooltip = ''
     let resourceUri
-    if (element.type === treeViewItemType.group) {
+    if (element.type === treeViewItemType.folder) {
       if (element.collapsibleState === collapsibleStateEnums.expanded) {
         collapsibleState = vscode.TreeItemCollapsibleState.Expanded
       } else {

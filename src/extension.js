@@ -4,7 +4,7 @@ const {
   collapsibleStateEnums,
 } = require('./utils/constant')
 const vscode = require('vscode')
-const saveGroup = require('./saveGroup')
+const saveFolder = require('./saveFolder')
 const updateCollapsibleState = require('./updateCollapsibleState')
 const removeNode = require('./removeNode')
 const CommandEditor = require('./CommandEditor')
@@ -42,9 +42,9 @@ async function activate(context) {
   context.subscriptions.push(view)
 
   vscode.commands.registerCommand(
-    `${extensionNameSpace}.addGroup`,
+    `${extensionNameSpace}.addFolder`,
     async parentNode => {
-      const newElement = await saveGroup(context, parentNode)
+      const newElement = await saveFolder(context, parentNode)
       if (!is.nullOrUndefined(newElement)) {
         mainViewTreeDataProvider.refresh()
         await view.reveal(newElement)
@@ -58,14 +58,10 @@ async function activate(context) {
   )
 
   vscode.commands.registerCommand(
-    `${extensionNameSpace}.renameGroup`,
+    `${extensionNameSpace}.renameFolder`,
     async node => {
-      await saveGroup(context, null, node)
+      await saveFolder(context, null, node)
       mainViewTreeDataProvider.refresh()
-
-      // const terminal = vscode.window.terminals[0]
-      // terminal.show()
-      // terminal.sendText('node -v')
     }
   )
 
