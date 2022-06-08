@@ -1,35 +1,35 @@
 {
-  "commandShelf.activitybar.title": "命令库",
+  "commandBookmark.activitybar.title": "命令书签",
 
-  "commandShelf.command.addGroup": "添加分组",
-  "commandShelf.command.addCommand": "添加命令",
-  "commandShelf.command.refresh": "刷新",
-  "commandShelf.command.Rename": "重命名",
-  "commandShelf.command.Remove": "移除",
-  "commandShelf.command.editCommand": "编辑命令",
-  "commandShelf.command.runCommand": "运行命令",
+  "commandBookmark.command.addGroup": "添加分组",
+  "commandBookmark.command.addCommand": "添加命令",
+  "commandBookmark.command.refresh": "刷新",
+  "commandBookmark.command.Rename": "重命名",
+  "commandBookmark.command.Remove": "移除",
+  "commandBookmark.command.editCommand": "编辑命令",
+  "commandBookmark.command.runCommand": "运行命令",
 
-  "commandShelf.inputBox.title.addGroup": "添加分组",
-  "commandShelf.inputBox.placeHolder.inputGroupName": "输入分组名称.",
-  "commandShelf.inputBox.validateInput.requireGroupName": "分组名称不能为空.",
-  "commandShelf.inputBox.validateInput.sameNodeName": "不能与其他同级节点重名",
+  "commandBookmark.inputBox.title.addGroup": "添加分组",
+  "commandBookmark.inputBox.placeHolder.inputGroupName": "输入分组名称.",
+  "commandBookmark.inputBox.validateInput.requireGroupName": "分组名称不能为空.",
+  "commandBookmark.inputBox.validateInput.sameNodeName": "不能与其他同级节点重名",
 
-  "commandShelf.inputBox.messageItem.title.remove": "移除",
-  "commandShelf.inputBox.messageItem.message.remove": "移除此",
-  "commandShelf.inputBox.messageItem.message.group": "分组",
-  "commandShelf.inputBox.messageItem.message.command": "命令",
+  "commandBookmark.inputBox.messageItem.title.remove": "移除",
+  "commandBookmark.inputBox.messageItem.message.remove": "移除此",
+  "commandBookmark.inputBox.messageItem.message.group": "分组",
+  "commandBookmark.inputBox.messageItem.message.command": "命令",
 
-  "commandShelf.inputBox.title.addCommand": "添加命令",
-  "commandShelf.inputBox.title.editCommand": "编辑命令",
-  "commandShelf.inputBox.placeHolder.inputCommandLine": "输入命令行",
-  "commandShelf.inputBox.validationMessage.inputCommandLine.required": "命令行不能为空。",
-  "commandShelf.inputBox.placeHolder.inputCommandName": "输入命令名称",
-  "commandShelf.inputBox.prompt.inputCommandName": "命令名称只会出现在树状视图中，不会被执行。",
-  "commandShelf.inputBox.validationMessage.inputCommandName.required": "命令名称不能为空",
+  "commandBookmark.inputBox.title.addCommand": "添加命令",
+  "commandBookmark.inputBox.title.editCommand": "编辑命令",
+  "commandBookmark.inputBox.placeHolder.inputCommandLine": "输入命令行",
+  "commandBookmark.inputBox.validationMessage.inputCommandLine.required": "命令行不能为空。",
+  "commandBookmark.inputBox.placeHolder.inputCommandName": "输入命令名称",
+  "commandBookmark.inputBox.prompt.inputCommandName": "命令名称只会出现在树状视图中，不会被执行。",
+  "commandBookmark.inputBox.validationMessage.inputCommandName.required": "命令名称不能为空",
 
-  "commandShelf.errorMessage.noneActiveTerminals": "需要终端。",
+  "commandBookmark.errorMessage.noneActiveTerminals": "需要终端。",
 
-  "commandShelf.punctuation.question": "？",
+  "commandBookmark.punctuation.question": "？",
 
-  "commandShelf.viewsWelcome.intro": "欢迎使用命令库。"
+  "commandBookmark.viewsWelcome.intro": "欢迎使用命令库。"
 }

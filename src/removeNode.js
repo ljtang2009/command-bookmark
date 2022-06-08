@@ -6,12 +6,12 @@ const { removeElement } = require('./utils/storage')
 
 module.exports = async (context, node) => {
   const messageStr = `${i18n.localize(
-    'commandShelf.inputBox.messageItem.message.remove'
+    'commandBookmark.inputBox.messageItem.message.remove'
   )}${i18n.localize(
     node.type === treeViewItemType.group
-      ? 'commandShelf.inputBox.messageItem.message.group'
-      : 'commandShelf.inputBox.messageItem.message.command'
-  )}${i18n.localize('commandShelf.punctuation.question')}`
+      ? 'commandBookmark.inputBox.messageItem.message.group'
+      : 'commandBookmark.inputBox.messageItem.message.command'
+  )}${i18n.localize('commandBookmark.punctuation.question')}`
   const messageResult = await vscode.window.showWarningMessage(
     messageStr,
     {
@@ -19,7 +19,7 @@ module.exports = async (context, node) => {
     },
     {
       remove: true,
-      title: i18n.localize('commandShelf.inputBox.messageItem.title.remove'),
+      title: i18n.localize('commandBookmark.inputBox.messageItem.title.remove'),
     }
   )
   if (!is.undefined(messageResult) && messageResult.remove) {

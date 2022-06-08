@@ -12,26 +12,26 @@ const i18n = require('./utils/i18n')
  */
 async function showInputBox(defaultValue, siblings) {
   const placeHolder = i18n.localize(
-    'commandShelf.inputBox.placeHolder.inputGroupName'
+    'commandBookmark.inputBox.placeHolder.inputGroupName'
   )
   let result = await vscode.window.showInputBox({
     ignoreFocusOut: true,
     prompt: placeHolder,
     value: defaultValue,
-    title: i18n.localize('commandShelf.inputBox.title.addGroup'),
+    title: i18n.localize('commandBookmark.inputBox.title.addGroup'),
     placeHolder: placeHolder,
     validateInput: text => {
       let validateResult
       if (is.undefined(text) || is.emptyStringOrWhitespace(text)) {
         validateResult = i18n.localize(
-          'commandShelf.inputBox.validateInput.requireGroupName'
+          'commandBookmark.inputBox.validateInput.requireGroupName'
         )
       } else if (
         !is.nullOrUndefined(siblings) &&
         siblings.some(item => item.name === text.trim())
       ) {
         validateResult = i18n.localize(
-          'commandShelf.inputBox.validateInput.sameNodeName'
+          'commandBookmark.inputBox.validateInput.sameNodeName'
         )
       }
       return validateResult

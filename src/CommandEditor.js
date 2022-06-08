@@ -16,8 +16,8 @@ class CommandEditor {
     this.element = element
     this.title = i18n.localize(
       is.nullOrUndefined(element)
-        ? 'commandShelf.inputBox.title.addCommand'
-        : 'commandShelf.inputBox.title.editCommand'
+        ? 'commandBookmark.inputBox.title.addCommand'
+        : 'commandBookmark.inputBox.title.editCommand'
     )
     this.currentStep = 1
     this.totalSteps = 2
@@ -34,7 +34,7 @@ class CommandEditor {
     return new Promise(resolve => {
       /* #region init properties */
       const placeholder = i18n.localize(
-        'commandShelf.inputBox.placeHolder.inputCommandLine'
+        'commandBookmark.inputBox.placeHolder.inputCommandLine'
       )
       this.currentInputBox = vscode.window.createInputBox()
       this.currentInputBox.ignoreFocusOut = true
@@ -60,7 +60,7 @@ class CommandEditor {
       this.currentInputBox.onDidAccept(async () => {
         if (is.emptyStringOrWhitespace(this.currentInputBox.value)) {
           this.currentInputBox.validationMessage = i18n.localize(
-            'commandShelf.inputBox.validationMessage.inputCommandLine.required'
+            'commandBookmark.inputBox.validationMessage.inputCommandLine.required'
           )
         } else {
           this.commandLine = this.currentInputBox.value.trim()
@@ -78,14 +78,14 @@ class CommandEditor {
     return new Promise(resolve => {
       /* #region init properties */
       const placeholder = i18n.localize(
-        'commandShelf.inputBox.placeHolder.inputCommandName'
+        'commandBookmark.inputBox.placeHolder.inputCommandName'
       )
       this.currentInputBox = vscode.window.createInputBox()
       this.currentInputBox.ignoreFocusOut = true
       this.currentInputBox.placeholder = placeholder
       this.currentInputBox.title = `${this.title} - ${placeholder}`
       this.currentInputBox.prompt = i18n.localize(
-        'commandShelf.inputBox.prompt.inputCommandName'
+        'commandBookmark.inputBox.prompt.inputCommandName'
       )
       this.currentInputBox.value = is.nullOrUndefined(this.element)
         ? this.commandLine.substring(0, 20)
@@ -112,7 +112,7 @@ class CommandEditor {
       this.currentInputBox.onDidAccept(async () => {
         if (is.emptyStringOrWhitespace(this.currentInputBox.value)) {
           this.currentInputBox.validationMessage = i18n.localize(
-            'commandShelf.inputBox.validationMessage.inputCommandName.required'
+            'commandBookmark.inputBox.validationMessage.inputCommandName.required'
           )
         } else {
           const siblings = getChildren(this.context, this.parentElement)
@@ -123,7 +123,7 @@ class CommandEditor {
             )
           ) {
             this.currentInputBox.validationMessage = i18n.localize(
-              'commandShelf.inputBox.validateInput.sameNodeName'
+              'commandBookmark.inputBox.validateInput.sameNodeName'
             )
           } else {
             this.currentInputBox.validationMessage = ''

@@ -17,7 +17,7 @@ module.exports = command => {
     terminal.sendText(commandLine, true)
   } else {
     vscode.window.showErrorMessage(
-      i18n.localize('commandShelf.errorMessage.noneActiveTerminals')
+      i18n.localize('commandBookmark.errorMessage.noneActiveTerminals')
     )
   }
 }

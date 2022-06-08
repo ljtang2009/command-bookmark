@@ -16,7 +16,7 @@ const runCommand = require('./runCommand')
  * @param {*} context
  */
 async function activate(context) {
-  if (process.env.CLEAR_STORAGE_COMMAND_SHELF) {
+  if (process.env.CLEAR_STORAGE_COMMAND_BOOKMARK) {
     await context.globalState.update(extensionNameSpace)
   }
   const mainViewTreeDataProvider = new MainViewTreeDataProvider(context)

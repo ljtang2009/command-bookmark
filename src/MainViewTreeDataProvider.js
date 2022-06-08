@@ -37,7 +37,7 @@ class MainViewTreeDataProvider {
     if (element.type === treeViewItemType.command) {
       collapsibleState = vscode.TreeItemCollapsibleState.None
       tooltip = element.commandLine
-      resourceUri = vscode.Uri.parse('.ps1') // TODO
+      resourceUri = vscode.Uri.parse('.ps1')
     }
 
     const result = {

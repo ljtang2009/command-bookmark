@@ -1,6 +1,6 @@
 {
-  "name": "command-shelf",
-  "displayName": "Command Shelf",
+  "name": "command-bookmark",
+  "displayName": "Command Bookmark",
   "description": "A vscode extension to store and execute command.",
   "version": "0.0.1",
   "publisher": "ljtang2009",
@@ -12,77 +12,77 @@
     "Other"
   ],
   "activationEvents": [
-    "onView:commandShelf",
-    "onCommand:commandShelf.addGroup",
-    "onCommand:commandShelf.addCommand",
-    "onCommand:commandShelf.refresh"
+    "onView:commandBookmark",
+    "onCommand:commandBookmark.addGroup",
+    "onCommand:commandBookmark.addCommand",
+    "onCommand:commandBookmark.refresh"
   ],
   "main": "./src/extension.js",
   "contributes": {
     "views": {
       "explorer": [
         {
-          "id": "commandShelf",
-          "name": "%commandShelf.activitybar.title%",
+          "id": "commandBookmark",
+          "name": "%commandBookmark.activitybar.title%",
           "icon": "./resources/icon/logo.svg",
-          "contextualTitle": "%commandShelf.activitybar.title%"
+          "contextualTitle": "%commandBookmark.activitybar.title%"
         }
       ]
     },
     "commands": [
       {
-        "command": "commandShelf.addGroup",
-        "title": "%commandShelf.command.addGroup%",
-        "category": "Command Shelf",
+        "command": "commandBookmark.addGroup",
+        "title": "%commandBookmark.command.addGroup%",
+        "category": "Command Bookmark",
         "icon": {
           "light": "./resources/icon/light/addFolder.svg",
           "dark": "./resources/icon/dark/addFolder.svg"
         }
       },
       {
-        "command": "commandShelf.addCommand",
-        "title": "%commandShelf.command.addCommand%",
-        "category": "Command Shelf",
+        "command": "commandBookmark.addCommand",
+        "title": "%commandBookmark.command.addCommand%",
+        "category": "Command Bookmark",
         "icon": {
           "light": "./resources/icon/light/addFile.svg",
           "dark": "./resources/icon/dark/addFile.svg"
         }
       },
       {
-        "command": "commandShelf.refresh",
-        "title": "%commandShelf.command.refresh%",
+        "command": "commandBookmark.refresh",
+        "title": "%commandBookmark.command.refresh%",
         "icon": {
           "light": "./resources/icon/light/refresh.svg",
           "dark": "./resources/icon/dark/refresh.svg"
         }
       },
       {
-        "command": "commandShelf.renameGroup",
-        "title": "%commandShelf.command.Rename%",
+        "command": "commandBookmark.renameGroup",
+        "title": "%commandBookmark.command.Rename%",
         "icon": {
           "light": "resources/icon/light/rename.svg",
           "dark": "resources/icon/dark/rename.svg"
         }
       },
       {
-        "command": "commandShelf.remove",
-        "title": "%commandShelf.command.Remove%",
+        "command": "commandBookmark.remove",
+        "title": "%commandBookmark.command.Remove%",
         "icon": {
           "light": "resources/icon/light/remove.svg",
           "dark": "resources/icon/dark/remove.svg"
         }
       },
       {
-        "command": "commandShelf.editCommand",
-        "title": "%commandShelf.command.editCommand%",
+        "command": "commandBookmark.editCommand",
+        "title": "%commandBookmark.command.editCommand%",
         "icon": {
           "light": "resources/icon/light/edit.svg",
           "dark": "resources/icon/dark/edit.svg"
         }
       },
       {
-        "command": "commandShelf.runCommand",
-        "title": "%commandShelf.command.runCommand%",
+        "command": "commandBookmark.runCommand",
+        "title": "%commandBookmark.command.runCommand%",
         "icon": {
           "light": "resources/icon/light/play.svg",
           "dark": "resources/icon/dark/play.svg"
@@ -92,66 +92,66 @@
     "menus": {
       "view/title": [
         {
-          "command": "commandShelf.addGroup",
-          "when": "view == commandShelf",
+          "command": "commandBookmark.addGroup",
+          "when": "view == commandBookmark",
           "group": "navigation@0"
         },
         {
-          "command": "commandShelf.addCommand",
-          "when": "view == commandShelf",
+          "command": "commandBookmark.addCommand",
+          "when": "view == commandBookmark",
           "group": "navigation@1"
         },
         {
-          "command": "commandShelf.refresh",
-          "when": "view == commandShelf",
+          "command": "commandBookmark.refresh",
+          "when": "view == commandBookmark",
           "group": "navigation@2"
         }
       ],
       "view/item/context": [
         {
-          "command": "commandShelf.addGroup",
-          "when": "view == commandShelf && viewItem == group",
+          "command": "commandBookmark.addGroup",
+          "when": "view == commandBookmark && viewItem == group",
           "group": "inline@0"
         },
         {
-          "command": "commandShelf.addCommand",
-          "when": "view == commandShelf && viewItem == group",
+          "command": "commandBookmark.addCommand",
+          "when": "view == commandBookmark && viewItem == group",
           "group": "inline@1"
         },
         {
-          "command": "commandShelf.renameGroup",
-          "when": "view == commandShelf && viewItem == group",
+          "command": "commandBookmark.renameGroup",
+          "when": "view == commandBookmark && viewItem == group",
           "group": "inline@2"
         },
         {
-          "command": "commandShelf.runCommand",
-          "when": "view == commandShelf && viewItem == command",
+          "command": "commandBookmark.runCommand",
+          "when": "view == commandBookmark && viewItem == command",
           "group": "inline@0"
         },
         {
-          "command": "commandShelf.editCommand",
-          "when": "view == commandShelf && viewItem == command",
+          "command": "commandBookmark.editCommand",
+          "when": "view == commandBookmark && viewItem == command",
           "group": "inline@1"
         },
         {
-          "command": "commandShelf.remove",
-          "when": "view == commandShelf",
+          "command": "commandBookmark.remove",
+          "when": "view == commandBookmark",
           "group": "inline@3"
         }
       ]
     },
     "viewsWelcome": [
       {
-        "view": "commandShelf",
-        "contents": "%commandShelf.viewsWelcome.intro%"
+        "view": "commandBookmark",
+        "contents": "%commandBookmark.viewsWelcome.intro%"
       },
       {
-        "view": "commandShelf",
-        "contents": "[Add command](command:commandShelf.addCommand)"
+        "view": "commandBookmark",
+        "contents": "[Add command](command:commandBookmark.addCommand)"
       },
       {
-        "view": "commandShelf",
-        "contents": "[Add group](command:commandShelf.addGroup)"
+        "view": "commandBookmark",
+        "contents": "[Add group](command:commandBookmark.addGroup)"
       }
     ]
   },
