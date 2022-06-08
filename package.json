@@ -8,6 +8,7 @@
     "vscode": "^1.67.0"
   },
   "categories": [
+    "Visualization",
     "Other"
   ],
   "activationEvents": [
@@ -112,7 +113,21 @@
           "group": "inline@3"
         }
       ]
-    }
+    },
+    "viewsWelcome": [
+      {
+        "view": "commandShelf",
+        "contents": "%commandShelf.viewsWelcome.intro%"
+      },
+      {
+        "view": "commandShelf",
+        "contents": "[Add command](command:commandShelf.addCommand)"
+      },
+      {
+        "view": "commandShelf",
+        "contents": "[Add group](command:commandShelf.addGroup)"
+      }
+    ]
   },
   "scripts": {
     "lint": "eslint .",
