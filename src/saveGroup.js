@@ -1,15 +1,16 @@
 const { treeViewItemType, collapsibleStateEnums } = require('./utils/constant')
 const vscode = require('vscode')
 const is = require('@sindresorhus/is')
-const { saveElement } = require('./utils/storage')
+const { saveElement, getChildren } = require('./utils/storage')
 const i18n = require('./utils/i18n')
 
 /**
  * Show input box
  * @param {String} defaultValue default value
+ * @param {Array} siblings siblings nodes
  * @returns {String} input value
  */
-async function showInputBox(defaultValue) {
+async function showInputBox(defaultValue, siblings) {
   const placeHolder = i18n.localize(
     'commandShelf.inputBox.placeHolder.inputGroupName'
   )
@@ -25,8 +26,14 @@ async function showInputBox(defaultValue) {
         validateResult = i18n.localize(
           'commandShelf.inputBox.validateInput.requireGroupName'
         )
+      } else if (
+        !is.nullOrUndefined(siblings) &&
+        siblings.some(item => item.name === text.trim())
+      ) {
+        validateResult = i18n.localize(
+          'commandShelf.inputBox.validateInput.sameNodeName'
+        )
       }
-      // TODO check duplication of name
       return validateResult
     },
   })
@@ -39,17 +46,10 @@ async function showInputBox(defaultValue) {
 module.exports = async (context, parentElement, element) => {
   let newElement
   const groupName = await showInputBox(
-    !is.nullOrUndefined(element) ? element.name : ''
+    !is.nullOrUndefined(element) ? element.name : '',
+    getChildren(context, parentElement)
   )
   if (!is.undefined(groupName)) {
-    // save the group
-    // await saveElement(context, parentElement, {
-    //   type: treeViewItemType.group,
-    //   collapsibleState: collapsibleStateEnums.collapsed,
-    //   children: [],
-    //   ...element,
-    //   name: groupName,
-    // })
     newElement = {
       type: treeViewItemType.group,
       collapsibleState: collapsibleStateEnums.collapsed,

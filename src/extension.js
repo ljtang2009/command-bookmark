@@ -7,8 +7,9 @@ const vscode = require('vscode')
 const saveGroup = require('./saveGroup')
 const updateCollapsibleState = require('./updateCollapsibleState')
 const removeNode = require('./removeNode')
-const saveCommand = require('./saveCommand')
-const { default: is } = require('@sindresorhus/is')
+const CommandEditor = require('./CommandEditor')
+const is = require('@sindresorhus/is')
+const runCommand = require('./runCommand')
 
 /**
  * this method is called when your extension is activated
@@ -62,8 +63,6 @@ async function activate(context) {
       await saveGroup(context, null, node)
       mainViewTreeDataProvider.refresh()
 
-      // await saveGroup(context)
-      //   mainViewTreeDataProvider.refresh()
       // const terminal = vscode.window.terminals[0]
       // terminal.show()
       // terminal.sendText('node -v')
@@ -78,14 +77,33 @@ async function activate(context) {
     }
   )
 
-  // saveCommand
   vscode.commands.registerCommand(
     `${extensionNameSpace}.addCommand`,
     async node => {
-      await saveCommand(context, node)
-      mainViewTreeDataProvider.refresh()
+      const newCommand = await new CommandEditor(context, node).save()
+      if (!is.nullOrUndefined(newCommand)) {
+        mainViewTreeDataProvider.refresh()
+        await view.reveal(newCommand)
+        mainViewTreeDataProvider.refresh()
+      }
     }
   )
+
+  vscode.commands.registerCommand(
+    `${extensionNameSpace}.editCommand`,
+    async node => {
+      const newCommand = await new CommandEditor(context, null, node).save()
+      if (!is.nullOrUndefined(newCommand)) {
+        mainViewTreeDataProvider.refresh()
+        await view.reveal(newCommand)
+        mainViewTreeDataProvider.refresh()
+      }
+    }
+  )
+
+  vscode.commands.registerCommand(`${extensionNameSpace}.runCommand`, node => {
+    runCommand(node)
+  })
 }
 
 /**

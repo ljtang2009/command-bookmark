@@ -6,14 +6,30 @@
   "commandShelf.command.refresh": "Refresh",
   "commandShelf.command.Rename": "Rename",
   "commandShelf.command.Remove": "Remove",
+  "commandShelf.command.editCommand": "Edit Command",
+  "commandShelf.command.runCommand": "Run Command",
 
   "commandShelf.inputBox.title.addGroup": "Add Group",
   "commandShelf.inputBox.placeHolder.inputGroupName": "Input group name.",
   "commandShelf.inputBox.validateInput.requireGroupName": "Require group name.",
+  "commandShelf.inputBox.validateInput.sameNodeName": "Cannot have two siblings nodes with the same name.",
+
   "commandShelf.inputBox.messageItem.title.remove": "Remove",
   "commandShelf.inputBox.messageItem.message.remove": "Remove this ",
   "commandShelf.inputBox.messageItem.message.group": "group",
   "commandShelf.inputBox.messageItem.message.command": "command",
 
-  "commandShelf.punctuation.question": "?"
+  "commandShelf.inputBox.title.addCommand": "Add Command",
+  "commandShelf.inputBox.title.editCommand": "Edit Command",
+  "commandShelf.inputBox.placeHolder.inputCommandLine": "Input command line",
+  "commandShelf.inputBox.validationMessage.inputCommandLine.required": "Require command line.",
+  "commandShelf.inputBox.placeHolder.inputCommandName": "Input command name",
+  "commandShelf.inputBox.prompt.inputCommandName": "Command name will be shown in the tree view instead of being executed.",
+  "commandShelf.inputBox.validationMessage.inputCommandName.required": "Require command name.",
+
+  "commandShelf.errorMessage.noneActiveTerminals": "Require active terminal.",
+
+  "commandShelf.punctuation.question": "?",
+
+  "commandShelf.viewsWelcome.intro": "Welcome to use Command Shelf."
 }

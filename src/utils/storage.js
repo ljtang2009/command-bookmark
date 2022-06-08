@@ -1,4 +1,4 @@
-const { extensionNameSpace, treeViewItemType } = require('./constant')
+const { extensionNameSpace } = require('./constant')
 const is = require('@sindresorhus/is')
 const { v4: uuidv4 } = require('uuid')
 
@@ -83,7 +83,6 @@ function getChildren(context, parentElement, type) {
     }
   }
   if (!is.undefined(result)) {
-    // TODO sort
     if (!is.undefined(type)) {
       result = result.filter(item => item.type === type)
     }
@@ -117,7 +116,6 @@ async function saveElement(context, parentElement, childElement) {
     childElement.id = uuidv4()
     children.push(childElement)
   }
-  // TODO sort
   await context.globalState.update(extensionNameSpace, storage)
 }
 

@@ -71,6 +71,22 @@
           "light": "resources/icon/light/remove.svg",
           "dark": "resources/icon/dark/remove.svg"
         }
+      },
+      {
+        "command": "commandShelf.editCommand",
+        "title": "%commandShelf.command.editCommand%",
+        "icon": {
+          "light": "resources/icon/light/edit.svg",
+          "dark": "resources/icon/dark/edit.svg"
+        }
+      },
+      {
+        "command": "commandShelf.runCommand",
+        "title": "%commandShelf.command.runCommand%",
+        "icon": {
+          "light": "resources/icon/light/play.svg",
+          "dark": "resources/icon/dark/play.svg"
+        }
       }
     ],
     "menus": {
@@ -106,6 +122,16 @@
           "command": "commandShelf.renameGroup",
           "when": "view == commandShelf && viewItem == group",
           "group": "inline@2"
+        },
+        {
+          "command": "commandShelf.runCommand",
+          "when": "view == commandShelf && viewItem == command",
+          "group": "inline@0"
+        },
+        {
+          "command": "commandShelf.editCommand",
+          "when": "view == commandShelf && viewItem == command",
+          "group": "inline@1"
         },
         {
           "command": "commandShelf.remove",
