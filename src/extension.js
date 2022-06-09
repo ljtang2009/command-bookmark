@@ -23,7 +23,8 @@ async function activate(context) {
   const view = vscode.window.createTreeView(extensionNameSpace, {
     treeDataProvider: mainViewTreeDataProvider,
     showCollapseAll: true,
-    // dragAndDropController:// TODO 定义拖拽
+    canSelectMany: true,
+    dragAndDropController: mainViewTreeDataProvider,
   })
   view.onDidCollapseElement(async e => {
     await updateCollapsibleState(

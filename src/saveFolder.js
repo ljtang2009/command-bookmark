@@ -7,10 +7,9 @@ const i18n = require('./utils/i18n')
 /**
  * Show input box
  * @param {String} defaultValue default value
- * @param {Array} siblings siblings nodes
  * @returns {String} input value
  */
-async function showInputBox(defaultValue, siblings) {
+async function showInputBox(defaultValue) {
   const placeHolder = i18n.localize(
     'commandBookmark.inputBox.placeHolder.inputFolderName'
   )
@@ -26,13 +25,6 @@ async function showInputBox(defaultValue, siblings) {
         validateResult = i18n.localize(
           'commandBookmark.inputBox.validateInput.requireFolderName'
         )
-      } else if (
-        !is.nullOrUndefined(siblings) &&
-        siblings.some(item => item.name === text.trim())
-      ) {
-        validateResult = i18n.localize(
-          'commandBookmark.inputBox.validateInput.sameNodeName'
-        )
       }
       return validateResult
     },
@@ -46,8 +38,7 @@ async function showInputBox(defaultValue, siblings) {
 module.exports = async (context, parentElement, element) => {
   let newElement
   const folderName = await showInputBox(
-    !is.nullOrUndefined(element) ? element.name : '',
-    getChildren(context, parentElement)
+    !is.nullOrUndefined(element) ? element.name : ''
   )
   if (!is.undefined(folderName)) {
     newElement = {

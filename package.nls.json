@@ -27,6 +27,10 @@
   "commandBookmark.inputBox.prompt.inputCommandName": "Command name will be shown in the tree view instead of being executed.",
   "commandBookmark.inputBox.validationMessage.inputCommandName.required": "Require command name.",
 
+  "commandBookmark.handleDrop.error.dropToCommand": "Cannot drop a node to another node but a folder.",
+  "commandBookmark.handleDrop.error.sameNode": "Cannot drop a node to itself.",
+  "commandBookmark.handleDrop.error.elderToYounger": "Cannot drop a parent node to its child.",
+
   "commandBookmark.errorMessage.noneActiveTerminals": "Require active terminal.",
 
   "commandBookmark.punctuation.question": "?",

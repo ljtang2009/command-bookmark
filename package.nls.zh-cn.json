@@ -27,6 +27,10 @@
   "commandBookmark.inputBox.prompt.inputCommandName": "命令名称只会出现在树状视图中，不会被执行。",
   "commandBookmark.inputBox.validationMessage.inputCommandName.required": "命令名称不能为空",
 
+  "commandBookmark.handleDrop.error.dropToCommand": "只能拖拽节点到文件夹上。",
+  "commandBookmark.handleDrop.error.sameNode": "无法拖拽节点到它自己。",
+  "commandBookmark.handleDrop.error.elderToYounger": "无法拖拽父节点到子节点。",
+
   "commandBookmark.errorMessage.noneActiveTerminals": "需要终端。",
 
   "commandBookmark.punctuation.question": "？",

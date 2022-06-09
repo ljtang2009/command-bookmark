@@ -115,24 +115,12 @@ class CommandEditor {
             'commandBookmark.inputBox.validationMessage.inputCommandName.required'
           )
         } else {
-          const siblings = getChildren(this.context, this.parentElement)
-          if (
-            !is.nullOrUndefined(siblings) &&
-            siblings.some(
-              item => item.name === this.currentInputBox.value.trim()
-            )
-          ) {
-            this.currentInputBox.validationMessage = i18n.localize(
-              'commandBookmark.inputBox.validateInput.sameNodeName'
-            )
-          } else {
-            this.currentInputBox.validationMessage = ''
-            this.commandName = this.currentInputBox.value.trim()
-            const newElement = await this.saveData()
-            resolve(newElement)
-            this.currentInputBox.editorType = null // When execute dispose(), onDidHide() would be fired immediately
-            this.currentInputBox.dispose()
-          }
+          this.currentInputBox.validationMessage = ''
+          this.commandName = this.currentInputBox.value.trim()
+          const newElement = await this.saveData()
+          resolve(newElement)
+          this.currentInputBox.editorType = null // When execute dispose(), onDidHide() would be fired immediately
+          this.currentInputBox.dispose()
         }
       })
       this.currentInputBox.show()

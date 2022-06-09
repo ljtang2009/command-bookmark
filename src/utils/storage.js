@@ -1,6 +1,7 @@
-const { extensionNameSpace } = require('./constant')
+const { extensionNameSpace, treeViewItemType } = require('./constant')
 const is = require('@sindresorhus/is')
 const { v4: uuidv4 } = require('uuid')
+const i18n = require('./i18n')
 
 /**
  * Get tree node by id recursively
@@ -60,6 +61,22 @@ function _findParentNodeByChildId(data, childId) {
   return result
 }
 
+function _isYounger(youngerNode, elderNode) {
+  let result = false
+  if (is.array(elderNode.children) && elderNode.children.length > 0) {
+    result = elderNode.children.some(child => child.id === youngerNode.id)
+    if (!result) {
+      for (const child of elderNode.children) {
+        result = _isYounger(youngerNode, child)
+        if (result) {
+          break
+        }
+      }
+    }
+  }
+  return result
+}
+
 /**
  * Get children elements.
  * @param {Object} context - Extension context.
@@ -90,6 +107,24 @@ function getChildren(context, parentElement, type) {
   return result
 }
 
+function _sortChildren(children) {
+  children.sort((obj1, obj2) => obj1.name.localeCompare(obj2.name))
+  for (const child of children) {
+    if (!is.nullOrUndefined(child.children) && child.children.length > 0) {
+      _sortChildren(child.children)
+    }
+  }
+}
+
+async function _sortStorage(context) {
+  let storage = context.globalState.get(extensionNameSpace)
+  if (is.undefined(storage)) {
+    storage = []
+  }
+  _sortChildren(storage)
+  await context.globalState.update(extensionNameSpace, storage)
+}
+
 async function saveElement(context, parentElement, childElement) {
   let storage = context.globalState.get(extensionNameSpace)
   if (is.undefined(storage)) {
@@ -117,6 +152,7 @@ async function saveElement(context, parentElement, childElement) {
     children.push(childElement)
   }
   await context.globalState.update(extensionNameSpace, storage)
+  await _sortStorage(context)
 }
 
 async function removeElement(context, elementId) {
@@ -164,10 +200,67 @@ function getParentByChildId(context, childId) {
   return result
 }
 
+async function reparentNodes(context, newParentNode, nodes) {
+  if (
+    !is.nullOrUndefined(newParentNode) &&
+    newParentNode.type !== treeViewItemType.folder
+  ) {
+    return i18n.localize('commandBookmark.handleDrop.error.dropToCommand')
+  }
+  let newParentChildren
+  let storage = context.globalState.get(extensionNameSpace)
+  if (is.undefined(storage)) {
+    storage = []
+  }
+  // If newParentNode is one of nodes, return err
+  if (
+    !is.nullOrUndefined(newParentNode) &&
+    nodes.some(node => node.id === newParentNode.id)
+  ) {
+    return i18n.localize('commandBookmark.handleDrop.error.sameNode')
+  }
+  // If newParentNode is a child of nodes, return err
+  if (!is.nullOrUndefined(newParentNode)) {
+    for (const node of nodes) {
+      if (_isYounger(newParentNode, node)) {
+        return i18n.localize('commandBookmark.handleDrop.error.elderToYounger')
+      }
+    }
+  }
+  if (is.nullOrUndefined(newParentNode)) {
+    newParentChildren = storage
+  } else {
+    newParentChildren = getChildren(context, newParentNode)
+  }
+  if (is.array(newParentChildren)) {
+    // ignore childrenNodes of nodes
+    const pureNodes = []
+    for (const node of nodes) {
+      const tempParent = _findParentNodeByChildId(nodes, node.id)
+      if (is.nullOrUndefined(tempParent)) {
+        pureNodes.push(node)
+      }
+    }
+
+    // remove nodes from old parent
+    const removePromiseArray = []
+    for (const node of pureNodes) {
+      removePromiseArray.push(removeElement(context, node.id))
+    }
+    await Promise.all(removePromiseArray)
+
+    // add nodes to new parent
+    newParentChildren.splice(newParentChildren.length, 0, ...pureNodes)
+    await context.globalState.update(extensionNameSpace, storage)
+    await _sortStorage(context)
+  }
+}
+
 module.exports = {
   getChildren,
   saveElement,
   removeElement,
   getNodeById,
   getParentByChildId,
+  reparentNodes,
 }
