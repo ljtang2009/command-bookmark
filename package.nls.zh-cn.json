@@ -8,6 +8,8 @@
   "commandBookmark.command.Remove": "移除",
   "commandBookmark.command.editCommand": "编辑命令",
   "commandBookmark.command.runCommand": "运行命令",
+  "commandBookmark.command.export": "导出",
+  "commandBookmark.command.import": "导入",
 
   "commandBookmark.inputBox.title.addFolder": "添加文件夹",
   "commandBookmark.inputBox.placeHolder.inputFolderName": "输入文件夹名称.",
@@ -34,6 +36,14 @@
   "commandBookmark.errorMessage.noneActiveTerminals": "需要终端。",
 
   "commandBookmark.punctuation.question": "？",
+
+  "commandBookmark.export.informationMessage.success": "成功导出数据到 ",
+  "commandBookmark.import.informationMessage.success": "成功导入数据。",
+
+  "commandBookmark.message.confirmImport": "导入后，本地数据将被覆盖。确认导入吗？",
+
+  "commandBookmark.message.button.yes": "是",
+  "commandBookmark.message.button.no": "否",
 
   "commandBookmark.viewsWelcome.intro": "欢迎使用命令书签。"
 }

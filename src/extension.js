@@ -10,6 +10,7 @@ const removeNode = require('./removeNode')
 const CommandEditor = require('./CommandEditor')
 const is = require('@sindresorhus/is')
 const runCommand = require('./runCommand')
+const { exportData, importData } = require('./utils/sync')
 
 /**
  * this method is called when your extension is activated
@@ -100,6 +101,15 @@ async function activate(context) {
 
   vscode.commands.registerCommand(`${extensionNameSpace}.runCommand`, node => {
     runCommand(node)
+  })
+
+  vscode.commands.registerCommand(`${extensionNameSpace}.export`, () => {
+    exportData(context)
+  })
+
+  vscode.commands.registerCommand(`${extensionNameSpace}.import`, async () => {
+    await importData(context)
+    mainViewTreeDataProvider.refresh()
   })
 }
 

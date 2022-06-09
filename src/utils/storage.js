@@ -256,6 +256,63 @@ async function reparentNodes(context, newParentNode, nodes) {
   }
 }
 
+function checkFolderData(node) {
+  let errorMessage
+  if (is.nullOrUndefined(node.children) || !is.array(node.children)) {
+    errorMessage = "Node's children must be array"
+  } else {
+    // eslint-disable-next-line no-use-before-define
+    errorMessage = checkData(node.children)
+  }
+  return errorMessage
+}
+
+function checkCommandData(node) {
+  let errorMessage
+  if (is.nullOrUndefined(node.commandLine)) {
+    errorMessage = "Command's commandLine can not be null or undefined."
+  }
+  return errorMessage
+}
+
+const tempIdArray = []
+
+function checkData(data, isFirst) {
+  let errorMessage
+  if (is.nullOrUndefined(data) || !is.array(data)) {
+    errorMessage = 'Data must be array.'
+  }
+  if (is.undefined(errorMessage)) {
+    if (isFirst) {
+      tempIdArray.splice(0)
+    }
+    for (const node of data) {
+      if (is.nullOrUndefined(node)) {
+        errorMessage = 'Node can not be null or undefined.'
+      } else if (is.nullOrUndefined(node.id)) {
+        errorMessage = "Node's id can not be null or undefined."
+      } else if (is.nullOrUndefined(node.name)) {
+        errorMessage = "Node's name can not be null or undefined."
+      } else if (tempIdArray.some(id => id === node.id)) {
+        errorMessage = `Duplicated id : ${node.id}`
+      } else {
+        tempIdArray.push(node.id)
+        if (node.type === treeViewItemType.folder) {
+          errorMessage = checkFolderData(node)
+        } else if (node.type === treeViewItemType.command) {
+          errorMessage = checkCommandData(node)
+        } else {
+          errorMessage = `Node type must be in ['${treeViewItemType.folder}','${treeViewItemType.command}']`
+        }
+      }
+      if (!is.undefined(errorMessage)) {
+        break
+      }
+    }
+  }
+  return errorMessage
+}
+
 module.exports = {
   getChildren,
   saveElement,
@@ -263,4 +320,5 @@ module.exports = {
   getNodeById,
   getParentByChildId,
   reparentNodes,
+  checkData,
 }

@@ -15,7 +15,10 @@
     "onView:commandBookmark",
     "onCommand:commandBookmark.addFolder",
     "onCommand:commandBookmark.addCommand",
-    "onCommand:commandBookmark.refresh"
+    "onCommand:commandBookmark.refresh",
+    "onCommand:commandBookmark.refresh",
+    "onCommand:commandBookmark.export",
+    "onCommand:commandBookmark.import"
   ],
   "main": "./src/extension.js",
   "contributes": {
@@ -87,6 +90,22 @@
           "light": "resources/icon/light/play.svg",
           "dark": "resources/icon/dark/play.svg"
         }
+      },
+      {
+        "command": "commandBookmark.export",
+        "title": "%commandBookmark.command.export%",
+        "icon": {
+          "light": "resources/icon/light/export.svg",
+          "dark": "resources/icon/dark/export.svg"
+        }
+      },
+      {
+        "command": "commandBookmark.import",
+        "title": "%commandBookmark.command.import%",
+        "icon": {
+          "light": "resources/icon/light/import.svg",
+          "dark": "resources/icon/dark/import.svg"
+        }
       }
     ],
     "menus": {
@@ -105,6 +124,16 @@
           "command": "commandBookmark.refresh",
           "when": "view == commandBookmark",
           "group": "navigation@2"
+        },
+        {
+          "command": "commandBookmark.import",
+          "when": "view == commandBookmark",
+          "group": "navigation@3"
+        },
+        {
+          "command": "commandBookmark.export",
+          "when": "view == commandBookmark",
+          "group": "navigation@4"
         }
       ],
       "view/item/context": [
@@ -152,6 +181,10 @@
       {
         "view": "commandBookmark",
         "contents": "[Add folder](command:commandBookmark.addFolder)"
+      },
+      {
+        "view": "commandBookmark",
+        "contents": "[Import](command:commandBookmark.import)"
       }
     ]
   },
@@ -174,6 +207,7 @@
   },
   "dependencies": {
     "@sindresorhus/is": "^4.6.0",
+    "fs-extra": "^10.1.0",
     "uuid": "^8.3.2"
   }
 }

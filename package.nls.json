@@ -8,6 +8,8 @@
   "commandBookmark.command.Remove": "Remove",
   "commandBookmark.command.editCommand": "Edit Command",
   "commandBookmark.command.runCommand": "Run Command",
+  "commandBookmark.command.export": "Export",
+  "commandBookmark.command.import": "Import",
 
   "commandBookmark.inputBox.title.addFolder": "Add Folder",
   "commandBookmark.inputBox.placeHolder.inputFolderName": "Input folder name.",
@@ -34,6 +36,14 @@
   "commandBookmark.errorMessage.noneActiveTerminals": "Require active terminal.",
 
   "commandBookmark.punctuation.question": "?",
+
+  "commandBookmark.export.informationMessage.success": "Successfully export data to ",
+  "commandBookmark.import.informationMessage.success": "Successfully import data.",
+
+  "commandBookmark.message.confirmImport": "Local data will be overridden after import. Are you sure want to do that?",
+
+  "commandBookmark.message.button.yes": "Yes",
+  "commandBookmark.message.button.no": "No",
 
   "commandBookmark.viewsWelcome.intro": "Welcome to use Command Bookmark."
 }
