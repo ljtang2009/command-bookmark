@@ -33,6 +33,7 @@ async function activate(context) {
       e.element.id,
       collapsibleStateEnums.collapsed
     )
+    mainViewTreeDataProvider.refresh()
   })
   view.onDidExpandElement(async e => {
     await updateCollapsibleState(
@@ -40,6 +41,7 @@ async function activate(context) {
       e.element.id,
       collapsibleStateEnums.expanded
     )
+    mainViewTreeDataProvider.refresh()
   })
   context.subscriptions.push(view)
 

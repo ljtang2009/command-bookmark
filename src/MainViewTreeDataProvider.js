@@ -6,6 +6,7 @@ const {
 } = require('./utils/storage')
 const { treeViewItemType, collapsibleStateEnums } = require('./utils/constant')
 const is = require('@sindresorhus/is')
+const path = require('path')
 class MainViewTreeDataProvider {
   constructor(context) {
     this.context = context
@@ -27,7 +28,7 @@ class MainViewTreeDataProvider {
     let collapsibleState
     const label = element.name
     let tooltip = ''
-    let resourceUri
+    let iconPath
     if (element.type === treeViewItemType.folder) {
       if (element.collapsibleState === collapsibleStateEnums.expanded) {
         collapsibleState = vscode.TreeItemCollapsibleState.Expanded
@@ -35,19 +36,39 @@ class MainViewTreeDataProvider {
         collapsibleState = vscode.TreeItemCollapsibleState.Collapsed
       }
       tooltip = element.name
-      resourceUri = vscode.Uri.parse(`/${element.name}`)
+      iconPath = {
+        light: path.resolve(
+          __dirname,
+          `../resources/icon/light/${
+            element.collapsibleState === collapsibleStateEnums.expanded
+              ? 'openFolder'
+              : 'folder'
+          }.svg`
+        ),
+        dark: path.resolve(
+          __dirname,
+          `../resources/icon/dark/${
+            element.collapsibleState === collapsibleStateEnums.expanded
+              ? 'openFolder'
+              : 'folder'
+          }.svg`
+        ),
+      }
     }
     if (element.type === treeViewItemType.command) {
       collapsibleState = vscode.TreeItemCollapsibleState.None
       tooltip = element.commandLine
-      resourceUri = vscode.Uri.parse('.ps1')
+      iconPath = {
+        light: path.resolve(__dirname, '../resources/icon/light/file.svg'),
+        dark: path.resolve(__dirname, '../resources/icon/dark/file.svg'),
+      }
     }
 
     const result = {
       label,
       collapsibleState,
       tooltip,
-      resourceUri,
+      iconPath,
     }
     result.id = element.id
     result.contextValue = element.type
