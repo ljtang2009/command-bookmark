@@ -1,65 +1,93 @@
-# command-shelf README
+# Command Bookmark
 
-This is the README for your extension "command-shelf". After writing up a brief description, we recommend including the following sections.
+This extension helps developers to save command lines for future reference.It saves development time, which is especially for long command lines.
 
-## Features
+## Usage
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+### View
 
-For example if there is an image subfolder under your extension project workspace:
+This extension contributes a view in Explorer view container. The view's name is "COMMAND BOOKMARK".
 
-\!\[feature X\]\(images/feature-x.png\)
+![](https://raw.githubusercontent.com/ljtang2009/pictures/main/20220609214828.png)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### Command
 
-## Requirements
+#### Add command
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+1. You can add a command with the click of "Add command" button in the welcome view or in the view title menus.
 
-## Extension Settings
+![](https://raw.githubusercontent.com/ljtang2009/pictures/main/20220610081257.png)
+![](https://raw.githubusercontent.com/ljtang2009/pictures/main/20220610081713.png)
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+2. Input a command line in the input box and press 'Enter'.
 
-For example:
+![](https://raw.githubusercontent.com/ljtang2009/pictures/main/input-box-add-command-line.gif)
 
-This extension contributes the following settings:
+3. Input a command name in the input box and press 'Enter'.
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+![](https://raw.githubusercontent.com/ljtang2009/pictures/main/Code_h8vlRocrtt.gif)
 
-## Known Issues
+4. Congratulations! You have added a command. You can see it in "COMMAND BOOKMARK" view.
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+![](https://raw.githubusercontent.com/ljtang2009/pictures/main/add-command-success.png)
 
-## Release Notes
+#### Run command
 
-Users appreciate release notes as you update your extension.
+Click the "Run Command" button. The command line will run in the terminal.
+
+![](https://raw.githubusercontent.com/ljtang2009/pictures/main/run-command.gif)
+
+#### Edit command
+
+Click the "Edit Command" button. Edit command line and command name.
+
+![](https://raw.githubusercontent.com/ljtang2009/pictures/main/edit-command.gif)
+
+### Folder
+
+#### Add Folder
+
+1. You can add a folder with the click of "Add folder" button in the welcome view or in the view title menus.
+
+![](https://raw.githubusercontent.com/ljtang2009/pictures/main/welcome-add-folder.png)
+![](https://raw.githubusercontent.com/ljtang2009/pictures/main/view-title-menu-add-folder.png)
+
+2. Input a command line in the input box and press 'Enter'.
+   ![](https://raw.githubusercontent.com/ljtang2009/pictures/main/input-box-add-group.gif)
+
+#### Rename Folder
+
+Click the "Rename" button. Edit folder name.
+![](https://raw.githubusercontent.com/ljtang2009/pictures/main/rename-folder.gif)
+
+### Drag & Drop
+
+Drag and drop node to organize relationships.
+
+![](https://raw.githubusercontent.com/ljtang2009/pictures/main/drag-drop.gif)
+
+### Remove
+
+Click the "Remove" button to remove node.
+![](https://raw.githubusercontent.com/ljtang2009/pictures/main/remove.gif)
+
+### Import & Export
+
+You may have several development environments. You can export the extension data from a vscode, then import the data to another vscode.
+
+#### Export
+
+Click the "Export" button. Then you can see a folder open dialog. After selecting a folder, a json file "commandBookmark.json" will be saved in it.
+
+![](https://raw.githubusercontent.com/ljtang2009/pictures/main/export.png)
+
+#### Import
+
+Click "Import" button in the welcome view or in the view title menus. After selecting a json file which exported from another vscode, the data well be imported in the extension.
+
+![](https://raw.githubusercontent.com/ljtang2009/pictures/main/import.png)
+![](https://raw.githubusercontent.com/ljtang2009/pictures/main/view-title-menu-import.png)
 
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Initialize the extension

@@ -1,6 +1,7 @@
 const { extensionNameSpace, treeViewItemType } = require('./constant')
 const is = require('@sindresorhus/is')
 const { v4: uuidv4 } = require('uuid')
+const i18n = require('./i18n')
 
 /**
  * Get tree node by id recursively
@@ -60,6 +61,22 @@ function _findParentNodeByChildId(data, childId) {
   return result
 }
 
+function _isYounger(youngerNode, elderNode) {
+  let result = false
+  if (is.array(elderNode.children) && elderNode.children.length > 0) {
+    result = elderNode.children.some(child => child.id === youngerNode.id)
+    if (!result) {
+      for (const child of elderNode.children) {
+        result = _isYounger(youngerNode, child)
+        if (result) {
+          break
+        }
+      }
+    }
+  }
+  return result
+}
+
 /**
  * Get children elements.
  * @param {Object} context - Extension context.
@@ -71,7 +88,7 @@ function getChildren(context, parentElement, type) {
   let result = []
   const storage = context.globalState.get(extensionNameSpace)
   if (!is.undefined(storage)) {
-    if (is.undefined(parentElement)) {
+    if (is.nullOrUndefined(parentElement)) {
       // Get 1st level children.
       result = storage
     } else {
@@ -83,12 +100,29 @@ function getChildren(context, parentElement, type) {
     }
   }
   if (!is.undefined(result)) {
-    // TODO sort
     if (!is.undefined(type)) {
       result = result.filter(item => item.type === type)
     }
   }
   return result
+}
+
+function _sortChildren(children) {
+  children.sort((obj1, obj2) => obj1.name.localeCompare(obj2.name))
+  for (const child of children) {
+    if (!is.nullOrUndefined(child.children) && child.children.length > 0) {
+      _sortChildren(child.children)
+    }
+  }
+}
+
+async function _sortStorage(context) {
+  let storage = context.globalState.get(extensionNameSpace)
+  if (is.undefined(storage)) {
+    storage = []
+  }
+  _sortChildren(storage)
+  await context.globalState.update(extensionNameSpace, storage)
 }
 
 async function saveElement(context, parentElement, childElement) {
@@ -117,8 +151,8 @@ async function saveElement(context, parentElement, childElement) {
     childElement.id = uuidv4()
     children.push(childElement)
   }
-  // TODO sort
   await context.globalState.update(extensionNameSpace, storage)
+  await _sortStorage(context)
 }
 
 async function removeElement(context, elementId) {
@@ -166,10 +200,125 @@ function getParentByChildId(context, childId) {
   return result
 }
 
+async function reparentNodes(context, newParentNode, nodes) {
+  if (
+    !is.nullOrUndefined(newParentNode) &&
+    newParentNode.type !== treeViewItemType.folder
+  ) {
+    return i18n.localize('commandBookmark.handleDrop.error.dropToCommand')
+  }
+  let newParentChildren
+  let storage = context.globalState.get(extensionNameSpace)
+  if (is.undefined(storage)) {
+    storage = []
+  }
+  // If newParentNode is one of nodes, return err
+  if (
+    !is.nullOrUndefined(newParentNode) &&
+    nodes.some(node => node.id === newParentNode.id)
+  ) {
+    return i18n.localize('commandBookmark.handleDrop.error.sameNode')
+  }
+  // If newParentNode is a child of nodes, return err
+  if (!is.nullOrUndefined(newParentNode)) {
+    for (const node of nodes) {
+      if (_isYounger(newParentNode, node)) {
+        return i18n.localize('commandBookmark.handleDrop.error.elderToYounger')
+      }
+    }
+  }
+  if (is.nullOrUndefined(newParentNode)) {
+    newParentChildren = storage
+  } else {
+    newParentChildren = getChildren(context, newParentNode)
+  }
+  if (is.array(newParentChildren)) {
+    // ignore childrenNodes of nodes
+    const pureNodes = []
+    for (const node of nodes) {
+      const tempParent = _findParentNodeByChildId(nodes, node.id)
+      if (is.nullOrUndefined(tempParent)) {
+        pureNodes.push(node)
+      }
+    }
+
+    // remove nodes from old parent
+    const removePromiseArray = []
+    for (const node of pureNodes) {
+      removePromiseArray.push(removeElement(context, node.id))
+    }
+    await Promise.all(removePromiseArray)
+
+    // add nodes to new parent
+    newParentChildren.splice(newParentChildren.length, 0, ...pureNodes)
+    await context.globalState.update(extensionNameSpace, storage)
+    await _sortStorage(context)
+  }
+}
+
+function checkFolderData(node) {
+  let errorMessage
+  if (is.nullOrUndefined(node.children) || !is.array(node.children)) {
+    errorMessage = "Node's children must be array"
+  } else {
+    // eslint-disable-next-line no-use-before-define
+    errorMessage = checkData(node.children)
+  }
+  return errorMessage
+}
+
+function checkCommandData(node) {
+  let errorMessage
+  if (is.nullOrUndefined(node.commandLine)) {
+    errorMessage = "Command's commandLine can not be null or undefined."
+  }
+  return errorMessage
+}
+
+const tempIdArray = []
+
+function checkData(data, isFirst) {
+  let errorMessage
+  if (is.nullOrUndefined(data) || !is.array(data)) {
+    errorMessage = 'Data must be array.'
+  }
+  if (is.undefined(errorMessage)) {
+    if (isFirst) {
+      tempIdArray.splice(0)
+    }
+    for (const node of data) {
+      if (is.nullOrUndefined(node)) {
+        errorMessage = 'Node can not be null or undefined.'
+      } else if (is.nullOrUndefined(node.id)) {
+        errorMessage = "Node's id can not be null or undefined."
+      } else if (is.nullOrUndefined(node.name)) {
+        errorMessage = "Node's name can not be null or undefined."
+      } else if (tempIdArray.some(id => id === node.id)) {
+        errorMessage = `Duplicated id : ${node.id}`
+      } else {
+        tempIdArray.push(node.id)
+        if (node.type === treeViewItemType.folder) {
+          errorMessage = checkFolderData(node)
+        } else if (node.type === treeViewItemType.command) {
+          errorMessage = checkCommandData(node)
+        } else {
+          errorMessage = `Node type must be in ['${treeViewItemType.folder}','${treeViewItemType.command}']`
+        }
+      }
+      if (!is.undefined(errorMessage)) {
+        break
+      }
+    }
+  }
+  return errorMessage
+}
+
 module.exports = {
   getChildren,
   saveElement,
   removeElement,
   getNodeById,
   getParentByChildId,
+  reparentNodes,
+  checkData,
 }

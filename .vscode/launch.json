@@ -17,7 +17,7 @@
       "request": "launch",
       "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
       "env": {
-        "CLEAR_STORAGE_COMMAND_SHELF": "true"
+        "CLEAR_STORAGE_COMMAND_BOOKMARK": "true"
       }
     },
     {

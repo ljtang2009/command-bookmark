@@ -1,7 +1,7 @@
-const extensionNameSpace = 'commandShelf'
+const extensionNameSpace = 'commandBookmark'
 
 const treeViewItemType = {
-  group: 'group',
+  folder: 'folder',
   command: 'command',
 }
 

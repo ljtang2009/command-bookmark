@@ -1,19 +1,49 @@
 {
-  "commandShelf.activitybar.title": "Command Shelf",
+  "commandBookmark.activitybar.title": "Command Bookmark",
 
-  "commandShelf.command.addGroup": "Add Group",
-  "commandShelf.command.addCommand": "Add Command",
-  "commandShelf.command.refresh": "Refresh",
-  "commandShelf.command.Rename": "Rename",
-  "commandShelf.command.Remove": "Remove",
+  "commandBookmark.command.addFolder": "Add Folder",
+  "commandBookmark.command.addCommand": "Add Command",
+  "commandBookmark.command.refresh": "Refresh",
+  "commandBookmark.command.Rename": "Rename",
+  "commandBookmark.command.Remove": "Remove",
+  "commandBookmark.command.editCommand": "Edit Command",
+  "commandBookmark.command.runCommand": "Run Command",
+  "commandBookmark.command.export": "Export",
+  "commandBookmark.command.import": "Import",
 
-  "commandShelf.inputBox.title.addGroup": "Add Group",
-  "commandShelf.inputBox.placeHolder.inputGroupName": "Input group name.",
-  "commandShelf.inputBox.validateInput.requireGroupName": "Require group name.",
-  "commandShelf.inputBox.messageItem.title.remove": "Remove",
-  "commandShelf.inputBox.messageItem.message.remove": "Remove this ",
-  "commandShelf.inputBox.messageItem.message.group": "group",
-  "commandShelf.inputBox.messageItem.message.command": "command",
+  "commandBookmark.inputBox.title.addFolder": "Add Folder",
+  "commandBookmark.inputBox.placeHolder.inputFolderName": "Input folder name.",
+  "commandBookmark.inputBox.validateInput.requireFolderName": "Require folder name.",
+  "commandBookmark.inputBox.validateInput.sameNodeName": "Cannot have two siblings nodes with the same name.",
 
-  "commandShelf.punctuation.question": "?"
+  "commandBookmark.inputBox.messageItem.title.remove": "Remove",
+  "commandBookmark.inputBox.messageItem.message.remove": "Remove this ",
+  "commandBookmark.inputBox.messageItem.message.folder": "folder",
+  "commandBookmark.inputBox.messageItem.message.command": "command",
+
+  "commandBookmark.inputBox.title.addCommand": "Add Command",
+  "commandBookmark.inputBox.title.editCommand": "Edit Command",
+  "commandBookmark.inputBox.placeHolder.inputCommandLine": "Input command line",
+  "commandBookmark.inputBox.validationMessage.inputCommandLine.required": "Require command line.",
+  "commandBookmark.inputBox.placeHolder.inputCommandName": "Input command name",
+  "commandBookmark.inputBox.prompt.inputCommandName": "Command name will be shown in the tree view instead of being executed.",
+  "commandBookmark.inputBox.validationMessage.inputCommandName.required": "Require command name.",
+
+  "commandBookmark.handleDrop.error.dropToCommand": "Cannot drop a node to another node but a folder.",
+  "commandBookmark.handleDrop.error.sameNode": "Cannot drop a node to itself.",
+  "commandBookmark.handleDrop.error.elderToYounger": "Cannot drop a parent node to its child.",
+
+  "commandBookmark.errorMessage.noneActiveTerminals": "Require active terminal.",
+
+  "commandBookmark.punctuation.question": "?",
+
+  "commandBookmark.export.informationMessage.success": "Successfully export data to ",
+  "commandBookmark.import.informationMessage.success": "Successfully import data.",
+
+  "commandBookmark.message.confirmImport": "Local data will be overridden after import. Are you sure want to do that?",
+
+  "commandBookmark.message.button.yes": "Yes",
+  "commandBookmark.message.button.no": "No",
+
+  "commandBookmark.viewsWelcome.intro": "Welcome to use Command Bookmark."
 }

@@ -1,7 +1,7 @@
 const { treeViewItemType, collapsibleStateEnums } = require('./utils/constant')
 const vscode = require('vscode')
 const is = require('@sindresorhus/is')
-const { saveElement } = require('./utils/storage')
+const { saveElement, getChildren } = require('./utils/storage')
 const i18n = require('./utils/i18n')
 
 /**
@@ -11,22 +11,21 @@ const i18n = require('./utils/i18n')
  */
 async function showInputBox(defaultValue) {
   const placeHolder = i18n.localize(
-    'commandShelf.inputBox.placeHolder.inputGroupName'
+    'commandBookmark.inputBox.placeHolder.inputFolderName'
   )
   let result = await vscode.window.showInputBox({
     ignoreFocusOut: true,
     prompt: placeHolder,
     value: defaultValue,
-    title: i18n.localize('commandShelf.inputBox.title.addGroup'),
+    title: i18n.localize('commandBookmark.inputBox.title.addFolder'),
     placeHolder: placeHolder,
     validateInput: text => {
       let validateResult
       if (is.undefined(text) || is.emptyStringOrWhitespace(text)) {
         validateResult = i18n.localize(
-          'commandShelf.inputBox.validateInput.requireGroupName'
+          'commandBookmark.inputBox.validateInput.requireFolderName'
         )
       }
-      // TODO check duplication of name
       return validateResult
     },
   })
@@ -38,24 +37,16 @@ async function showInputBox(defaultValue) {
 
 module.exports = async (context, parentElement, element) => {
   let newElement
-  const groupName = await showInputBox(
+  const folderName = await showInputBox(
     !is.nullOrUndefined(element) ? element.name : ''
   )
-  if (!is.undefined(groupName)) {
-    // save the group
-    // await saveElement(context, parentElement, {
-    //   type: treeViewItemType.group,
-    //   collapsibleState: collapsibleStateEnums.collapsed,
-    //   children: [],
-    //   ...element,
-    //   name: groupName,
-    // })
+  if (!is.undefined(folderName)) {
     newElement = {
-      type: treeViewItemType.group,
+      type: treeViewItemType.folder,
       collapsibleState: collapsibleStateEnums.collapsed,
       children: [],
       ...element,
-      name: groupName,
+      name: folderName,
     }
     await saveElement(context, parentElement, newElement)
   }

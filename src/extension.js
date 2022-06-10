@@ -4,25 +4,28 @@ const {
   collapsibleStateEnums,
 } = require('./utils/constant')
 const vscode = require('vscode')
-const saveGroup = require('./saveGroup')
+const saveFolder = require('./saveFolder')
 const updateCollapsibleState = require('./updateCollapsibleState')
 const removeNode = require('./removeNode')
-const saveCommand = require('./saveCommand')
-const { default: is } = require('@sindresorhus/is')
+const CommandEditor = require('./CommandEditor')
+const is = require('@sindresorhus/is')
+const runCommand = require('./runCommand')
+const { exportData, importData } = require('./utils/sync')
 
 /**
  * this method is called when your extension is activated
  * @param {*} context
  */
 async function activate(context) {
-  if (process.env.CLEAR_STORAGE_COMMAND_SHELF) {
+  if (process.env.CLEAR_STORAGE_COMMAND_BOOKMARK) {
     await context.globalState.update(extensionNameSpace)
   }
   const mainViewTreeDataProvider = new MainViewTreeDataProvider(context)
   const view = vscode.window.createTreeView(extensionNameSpace, {
     treeDataProvider: mainViewTreeDataProvider,
     showCollapseAll: true,
-    // dragAndDropController:// TODO 定义拖拽
+    canSelectMany: true,
+    dragAndDropController: mainViewTreeDataProvider,
   })
   view.onDidCollapseElement(async e => {
     await updateCollapsibleState(
@@ -41,9 +44,9 @@ async function activate(context) {
   context.subscriptions.push(view)
 
   vscode.commands.registerCommand(
-    `${extensionNameSpace}.addGroup`,
+    `${extensionNameSpace}.addFolder`,
     async parentNode => {
-      const newElement = await saveGroup(context, parentNode)
+      const newElement = await saveFolder(context, parentNode)
       if (!is.nullOrUndefined(newElement)) {
         mainViewTreeDataProvider.refresh()
         await view.reveal(newElement)
@@ -57,16 +60,10 @@ async function activate(context) {
   )
 
   vscode.commands.registerCommand(
-    `${extensionNameSpace}.renameGroup`,
+    `${extensionNameSpace}.renameFolder`,
     async node => {
-      await saveGroup(context, null, node)
+      await saveFolder(context, null, node)
       mainViewTreeDataProvider.refresh()
-
-      // await saveGroup(context)
-      //   mainViewTreeDataProvider.refresh()
-      // const terminal = vscode.window.terminals[0]
-      // terminal.show()
-      // terminal.sendText('node -v')
     }
   )
 
@@ -78,14 +75,42 @@ async function activate(context) {
     }
   )
 
-  // saveCommand
   vscode.commands.registerCommand(
     `${extensionNameSpace}.addCommand`,
     async node => {
-      await saveCommand(context, node)
-      mainViewTreeDataProvider.refresh()
+      const newCommand = await new CommandEditor(context, node).save()
+      if (!is.nullOrUndefined(newCommand)) {
+        mainViewTreeDataProvider.refresh()
+        await view.reveal(newCommand)
+        mainViewTreeDataProvider.refresh()
+      }
     }
   )
+
+  vscode.commands.registerCommand(
+    `${extensionNameSpace}.editCommand`,
+    async node => {
+      const newCommand = await new CommandEditor(context, null, node).save()
+      if (!is.nullOrUndefined(newCommand)) {
+        mainViewTreeDataProvider.refresh()
+        await view.reveal(newCommand)
+        mainViewTreeDataProvider.refresh()
+      }
+    }
+  )
+
+  vscode.commands.registerCommand(`${extensionNameSpace}.runCommand`, node => {
+    runCommand(node)
+  })
+
+  vscode.commands.registerCommand(`${extensionNameSpace}.export`, () => {
+    exportData(context)
+  })
+
+  vscode.commands.registerCommand(`${extensionNameSpace}.import`, async () => {
+    await importData(context)
+    mainViewTreeDataProvider.refresh()
+  })
 }
 
 /**
