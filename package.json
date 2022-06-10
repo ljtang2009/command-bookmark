@@ -1,8 +1,8 @@
 {
   "name": "command-bookmark",
   "displayName": "Command Bookmark",
-  "description": "A vscode extension to store and execute command.",
-  "version": "0.0.1",
+  "description": "A vscode extension to organize command lines.",
+  "version": "1.0.0",
   "publisher": "ljtang2009",
   "engines": {
     "vscode": "^1.67.0"
