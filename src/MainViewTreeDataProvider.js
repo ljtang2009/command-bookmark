@@ -64,15 +64,13 @@ class MainViewTreeDataProvider {
 
   handleDrag(source, treeDataTransfer) {
     treeDataTransfer.set(
-      'application/vnd.code.tree.commandBookmark',
+      this.dropMimeTypes[0],
       new vscode.DataTransferItem(source)
     )
   }
 
   async handleDrop(target, sources) {
-    const transferItem = sources.get(
-      'application/vnd.code.tree.commandBookmark'
-    )
+    const transferItem = sources.get(this.dropMimeTypes[0])
     if (is.nullOrUndefined(transferItem)) {
       return
     }
@@ -82,7 +80,9 @@ class MainViewTreeDataProvider {
       transferItem.value
     )
     if (!is.nullOrUndefined(errorMessage)) {
-      vscode.window.showErrorMessage(errorMessage)
+      if (!is.emptyStringOrWhitespace(errorMessage)) {
+        vscode.window.showErrorMessage(errorMessage)
+      }
     } else {
       this.refresh()
     }
