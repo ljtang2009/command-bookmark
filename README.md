@@ -1,5 +1,7 @@
 # Command Bookmark
 
+English | [中文](https://github.com/ljtang2009/command-bookmark/blob/main/README.zh-cn.md)
+
 This extension helps developers to save command lines for future reference.It saves development time, which is especially for long command lines.
 
 ## Usage
@@ -7,6 +9,7 @@ This extension helps developers to save command lines for future reference.It sa
 ### View
 
 This extension contributes a view in Explorer view container. The view's name is "COMMAND BOOKMARK".
+
 ![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/view.png)
 
 ### Command
@@ -26,13 +29,13 @@ This extension contributes a view in Explorer view container. The view's name is
 
 #### Run command
 
-Click the "Run Command" button. The command line will run in the terminal.
+Click the "Run" button. The command line will run in the terminal.
 
 ![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/run-command.gif)
 
 #### Edit command
 
-Click the "Edit Command" button. Edit command line and command name.
+Click the "Edit" button. Edit command line and command name.
 
 ![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/edit-command.gif)
 
@@ -46,11 +49,13 @@ Click the "Edit Command" button. Edit command line and command name.
 ![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/menu-add-folder.png)
 
 2. Input a command line in the input box and press 'Enter'.
-   ![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/add-folder.gif)
+
+![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/add-folder.gif)
 
 #### Rename Folder
 
-Click the "edit" button. Edit folder name.
+Click the "Edit" button. Edit folder name.
+
 ![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/edit-folder.gif)
 
 ### Drag & Drop
@@ -62,6 +67,7 @@ Drag and drop nodes to organize relationships.
 ### Remove
 
 Click the "Remove" button to remove node.
+
 ![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/remove.gif)
 
 ### Import & Export
@@ -80,6 +86,8 @@ Click "Import" button in the welcome view or in the view title menus. After sele
 
 ![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/welcome-import.png)
 ![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/menu-import.png)
+
+## Release Notes
 
 ### 1.0.0
 
