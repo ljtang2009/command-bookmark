@@ -7,8 +7,7 @@ This extension helps developers to save command lines for future reference.It sa
 ### View
 
 This extension contributes a view in Explorer view container. The view's name is "COMMAND BOOKMARK".
-
-![](https://raw.githubusercontent.com/ljtang2009/pictures/main/20220609214828.png)
+![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/view.png)
 
 ### Command
 
@@ -16,32 +15,26 @@ This extension contributes a view in Explorer view container. The view's name is
 
 1. You can add a command with the click of "Add command" button in the welcome view or in the view title menus.
 
-![](https://raw.githubusercontent.com/ljtang2009/pictures/main/20220610081257.png)
-![](https://raw.githubusercontent.com/ljtang2009/pictures/main/20220610081713.png)
+![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/welcome-add-command.png)
+![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/menu-add-command.png)
 
-2. Input a command line in the input box and press 'Enter'.
+2. Input a command line in the input box and press 'Enter'. And then input a command name in the input box and press 'Enter'.
 
-![](https://raw.githubusercontent.com/ljtang2009/pictures/main/input-box-add-command-line.gif)
+![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/add-command.gif)
 
-3. Input a command name in the input box and press 'Enter'.
-
-![](https://raw.githubusercontent.com/ljtang2009/pictures/main/Code_h8vlRocrtt.gif)
-
-4. Congratulations! You have added a command. You can see it in "COMMAND BOOKMARK" view.
-
-![](https://raw.githubusercontent.com/ljtang2009/pictures/main/add-command-success.png)
+3. Congratulations! You have added a command. You can see it in "COMMAND BOOKMARK" view.
 
 #### Run command
 
 Click the "Run Command" button. The command line will run in the terminal.
 
-![](https://raw.githubusercontent.com/ljtang2009/pictures/main/run-command.gif)
+![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/run-command.gif)
 
 #### Edit command
 
 Click the "Edit Command" button. Edit command line and command name.
 
-![](https://raw.githubusercontent.com/ljtang2009/pictures/main/edit-command.gif)
+![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/edit-command.gif)
 
 ### Folder
 
@@ -49,27 +42,27 @@ Click the "Edit Command" button. Edit command line and command name.
 
 1. You can add a folder with the click of "Add folder" button in the welcome view or in the view title menus.
 
-![](https://raw.githubusercontent.com/ljtang2009/pictures/main/welcome-add-folder.png)
-![](https://raw.githubusercontent.com/ljtang2009/pictures/main/view-title-menu-add-folder.png)
+![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/welcome-add-folder.png)
+![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/menu-add-folder.png)
 
 2. Input a command line in the input box and press 'Enter'.
-   ![](https://raw.githubusercontent.com/ljtang2009/pictures/main/input-box-add-group.gif)
+   ![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/add-folder.gif)
 
 #### Rename Folder
 
-Click the "Rename" button. Edit folder name.
-![](https://raw.githubusercontent.com/ljtang2009/pictures/main/rename-folder.gif)
+Click the "edit" button. Edit folder name.
+![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/edit-folder.gif)
 
 ### Drag & Drop
 
-Drag and drop node to organize relationships.
+Drag and drop nodes to organize relationships.
 
-![](https://raw.githubusercontent.com/ljtang2009/pictures/main/drag-drop.gif)
+![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/drop-drag.gif)
 
 ### Remove
 
 Click the "Remove" button to remove node.
-![](https://raw.githubusercontent.com/ljtang2009/pictures/main/remove.gif)
+![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/remove.gif)
 
 ### Import & Export
 
@@ -77,16 +70,16 @@ You may have several development environments. You can export the extension data
 
 #### Export
 
-Click the "Export" button. Then you can see a folder open dialog. After selecting a folder, a json file "commandBookmark.json" will be saved in it.
+Click the "Export" button. Then you can see a file open dialog. After selecting a json file, extension's data will be saved in it.
 
-![](https://raw.githubusercontent.com/ljtang2009/pictures/main/export.png)
+![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/export.png)
 
 #### Import
 
 Click "Import" button in the welcome view or in the view title menus. After selecting a json file which exported from another vscode, the data well be imported in the extension.
 
-![](https://raw.githubusercontent.com/ljtang2009/pictures/main/import.png)
-![](https://raw.githubusercontent.com/ljtang2009/pictures/main/view-title-menu-import.png)
+![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/welcome-import.png)
+![](https://raw.githubusercontent.com/ljtang2009/command-bookmark/main/resources/readme/en/menu-import.png)
 
 ### 1.0.0
 
