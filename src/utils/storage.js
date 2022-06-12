@@ -201,6 +201,21 @@ function getParentByChildId(context, childId) {
 }
 
 async function reparentNodes(context, newParentNode, nodes) {
+  // If newParentNode is one of nodes, return err
+  if (
+    !is.nullOrUndefined(newParentNode) &&
+    nodes.some(node => node.id === newParentNode.id)
+  ) {
+    return ''
+  }
+  // If newParentNode is a child of nodes, return err
+  if (!is.nullOrUndefined(newParentNode)) {
+    for (const node of nodes) {
+      if (_isYounger(newParentNode, node)) {
+        return ''
+      }
+    }
+  }
   if (
     !is.nullOrUndefined(newParentNode) &&
     newParentNode.type !== treeViewItemType.folder
@@ -211,21 +226,6 @@ async function reparentNodes(context, newParentNode, nodes) {
   let storage = context.globalState.get(extensionNameSpace)
   if (is.undefined(storage)) {
     storage = []
-  }
-  // If newParentNode is one of nodes, return err
-  if (
-    !is.nullOrUndefined(newParentNode) &&
-    nodes.some(node => node.id === newParentNode.id)
-  ) {
-    return i18n.localize('commandBookmark.handleDrop.error.sameNode')
-  }
-  // If newParentNode is a child of nodes, return err
-  if (!is.nullOrUndefined(newParentNode)) {
-    for (const node of nodes) {
-      if (_isYounger(newParentNode, node)) {
-        return i18n.localize('commandBookmark.handleDrop.error.elderToYounger')
-      }
-    }
   }
   if (is.nullOrUndefined(newParentNode)) {
     newParentChildren = storage

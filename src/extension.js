@@ -63,7 +63,7 @@ async function activate(context) {
   )
 
   vscode.commands.registerCommand(
-    `${extensionNameSpace}.renameFolder`,
+    `${extensionNameSpace}.editFolder`,
     async node => {
       await saveFolder(context, null, node)
       mainViewTreeDataProvider.refresh()

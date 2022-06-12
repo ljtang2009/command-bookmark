@@ -1,8 +1,8 @@
 const vscode = require('vscode')
 const i18n = require('./utils/i18n')
 const is = require('@sindresorhus/is')
-const { saveElement, getChildren } = require('./utils/storage')
-const { treeViewItemType } = require('./utils/constant')
+const { saveElement } = require('./utils/storage')
+const { treeViewItemType, extensionNameSpace } = require('./utils/constant')
 
 const EditorType = {
   commandLine: Symbol(),
@@ -16,8 +16,8 @@ class CommandEditor {
     this.element = element
     this.title = i18n.localize(
       is.nullOrUndefined(element)
-        ? 'commandBookmark.inputBox.title.addCommand'
-        : 'commandBookmark.inputBox.title.editCommand'
+        ? `${extensionNameSpace}.inputBox.title.addCommand`
+        : `${extensionNameSpace}.inputBox.title.editCommand`
     )
     this.currentStep = 1
     this.totalSteps = 2
@@ -34,7 +34,7 @@ class CommandEditor {
     return new Promise(resolve => {
       /* #region init properties */
       const placeholder = i18n.localize(
-        'commandBookmark.inputBox.placeHolder.inputCommandLine'
+        `${extensionNameSpace}.inputBox.placeHolder.inputCommandLine`
       )
       this.currentInputBox = vscode.window.createInputBox()
       this.currentInputBox.ignoreFocusOut = true
@@ -60,7 +60,7 @@ class CommandEditor {
       this.currentInputBox.onDidAccept(async () => {
         if (is.emptyStringOrWhitespace(this.currentInputBox.value)) {
           this.currentInputBox.validationMessage = i18n.localize(
-            'commandBookmark.inputBox.validationMessage.inputCommandLine.required'
+            `${extensionNameSpace}.inputBox.validationMessage.inputCommandLine.required`
           )
         } else {
           this.commandLine = this.currentInputBox.value.trim()
@@ -78,14 +78,14 @@ class CommandEditor {
     return new Promise(resolve => {
       /* #region init properties */
       const placeholder = i18n.localize(
-        'commandBookmark.inputBox.placeHolder.inputCommandName'
+        `${extensionNameSpace}.inputBox.placeHolder.inputCommandName`
       )
       this.currentInputBox = vscode.window.createInputBox()
       this.currentInputBox.ignoreFocusOut = true
       this.currentInputBox.placeholder = placeholder
       this.currentInputBox.title = `${this.title} - ${placeholder}`
       this.currentInputBox.prompt = i18n.localize(
-        'commandBookmark.inputBox.prompt.inputCommandName'
+        `${extensionNameSpace}.inputBox.prompt.inputCommandName`
       )
       this.currentInputBox.value = is.nullOrUndefined(this.element)
         ? this.commandLine.substring(0, 20)
@@ -112,7 +112,7 @@ class CommandEditor {
       this.currentInputBox.onDidAccept(async () => {
         if (is.emptyStringOrWhitespace(this.currentInputBox.value)) {
           this.currentInputBox.validationMessage = i18n.localize(
-            'commandBookmark.inputBox.validationMessage.inputCommandName.required'
+            `${extensionNameSpace}.inputBox.validationMessage.inputCommandName.required`
           )
         } else {
           this.currentInputBox.validationMessage = ''

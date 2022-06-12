@@ -56,8 +56,8 @@
         "icon": "$(refresh)"
       },
       {
-        "command": "commandBookmark.renameFolder",
-        "title": "%commandBookmark.command.rename%",
+        "command": "commandBookmark.editFolder",
+        "title": "%commandBookmark.command.edit%",
         "category": "%commandBookmark.command.category%",
         "icon": "$(edit)"
       },
@@ -69,13 +69,13 @@
       },
       {
         "command": "commandBookmark.editCommand",
-        "title": "%commandBookmark.command.editCommand%",
+        "title": "%commandBookmark.command.edit%",
         "category": "%commandBookmark.command.category%",
         "icon": "$(edit)"
       },
       {
         "command": "commandBookmark.runCommand",
-        "title": "%commandBookmark.command.runCommand%",
+        "title": "%commandBookmark.command.run%",
         "category": "%commandBookmark.command.category%",
         "icon": "$(run)"
       },
@@ -95,7 +95,7 @@
     "menus": {
       "commandPalette": [
         {
-          "command": "commandBookmark.renameFolder",
+          "command": "commandBookmark.editFolder",
           "when": "false"
         },
         {
@@ -113,12 +113,12 @@
       ],
       "view/title": [
         {
-          "command": "commandBookmark.addFolder",
+          "command": "commandBookmark.addCommand",
           "when": "view == commandBookmark",
           "group": "navigation@0"
         },
         {
-          "command": "commandBookmark.addCommand",
+          "command": "commandBookmark.addFolder",
           "when": "view == commandBookmark",
           "group": "navigation@1"
         },
@@ -150,7 +150,7 @@
           "group": "inline@1"
         },
         {
-          "command": "commandBookmark.renameFolder",
+          "command": "commandBookmark.editFolder",
           "when": "view == commandBookmark && viewItem == folder",
           "group": "inline@2"
         },

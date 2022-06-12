@@ -8,12 +8,13 @@
   "commandBookmark.command.refresh": "刷新",
   "commandBookmark.command.rename": "重命名",
   "commandBookmark.command.remove": "移除",
-  "commandBookmark.command.editCommand": "编辑命令",
-  "commandBookmark.command.runCommand": "运行命令",
+  "commandBookmark.command.edit": "编辑",
+  "commandBookmark.command.run": "运行",
   "commandBookmark.command.export": "导出",
   "commandBookmark.command.import": "导入",
 
   "commandBookmark.inputBox.title.addFolder": "添加文件夹",
+  "commandBookmark.inputBox.title.editFolder": "修改文件夹",
   "commandBookmark.inputBox.placeHolder.inputFolderName": "输入文件夹名称.",
   "commandBookmark.inputBox.validateInput.requireFolderName": "文件夹名称不能为空.",
   "commandBookmark.inputBox.validateInput.sameNodeName": "不能与其他同级节点重名",
@@ -32,8 +33,6 @@
   "commandBookmark.inputBox.validationMessage.inputCommandName.required": "命令名称不能为空",
 
   "commandBookmark.handleDrop.error.dropToCommand": "只能拖拽节点到文件夹上。",
-  "commandBookmark.handleDrop.error.sameNode": "无法拖拽节点到它自己。",
-  "commandBookmark.handleDrop.error.elderToYounger": "无法拖拽父节点到子节点。",
 
   "commandBookmark.errorMessage.noneActiveTerminals": "需要终端。",
 

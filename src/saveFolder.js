@@ -1,7 +1,7 @@
 const { treeViewItemType, collapsibleStateEnums } = require('./utils/constant')
 const vscode = require('vscode')
 const is = require('@sindresorhus/is')
-const { saveElement, getChildren } = require('./utils/storage')
+const { saveElement } = require('./utils/storage')
 const i18n = require('./utils/i18n')
 
 /**
@@ -17,7 +17,10 @@ async function showInputBox(defaultValue) {
     ignoreFocusOut: true,
     prompt: placeHolder,
     value: defaultValue,
-    title: i18n.localize('commandBookmark.inputBox.title.addFolder'),
+    title:
+      is.nullOrUndefined(defaultValue) || is.emptyString(defaultValue)
+        ? i18n.localize('commandBookmark.inputBox.title.addFolder')
+        : i18n.localize('commandBookmark.inputBox.title.editFolder'),
     placeHolder: placeHolder,
     validateInput: text => {
       let validateResult

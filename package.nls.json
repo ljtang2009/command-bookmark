@@ -8,12 +8,13 @@
   "commandBookmark.command.refresh": "Refresh",
   "commandBookmark.command.rename": "Rename",
   "commandBookmark.command.remove": "Remove",
-  "commandBookmark.command.editCommand": "Edit Command",
-  "commandBookmark.command.runCommand": "Run Command",
+  "commandBookmark.command.edit": "Edit",
+  "commandBookmark.command.run": "Run",
   "commandBookmark.command.export": "Export",
   "commandBookmark.command.import": "Import",
 
   "commandBookmark.inputBox.title.addFolder": "Add Folder",
+  "commandBookmark.inputBox.title.editFolder": "Edit Folder",
   "commandBookmark.inputBox.placeHolder.inputFolderName": "Input folder name.",
   "commandBookmark.inputBox.validateInput.requireFolderName": "Require folder name.",
   "commandBookmark.inputBox.validateInput.sameNodeName": "Cannot have two siblings nodes with the same name.",
@@ -32,8 +33,6 @@
   "commandBookmark.inputBox.validationMessage.inputCommandName.required": "Require command name.",
 
   "commandBookmark.handleDrop.error.dropToCommand": "Cannot drop a node to another node but a folder.",
-  "commandBookmark.handleDrop.error.sameNode": "Cannot drop a node to itself.",
-  "commandBookmark.handleDrop.error.elderToYounger": "Cannot drop a parent node to its child.",
 
   "commandBookmark.errorMessage.noneActiveTerminals": "Require active terminal.",
 
