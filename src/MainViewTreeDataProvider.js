@@ -27,7 +27,7 @@ class MainViewTreeDataProvider {
     let collapsibleState
     const label = element.name
     let tooltip = ''
-    let resourceUri
+    let iconPath
     if (element.type === treeViewItemType.folder) {
       if (element.collapsibleState === collapsibleStateEnums.expanded) {
         collapsibleState = vscode.TreeItemCollapsibleState.Expanded
@@ -35,19 +35,23 @@ class MainViewTreeDataProvider {
         collapsibleState = vscode.TreeItemCollapsibleState.Collapsed
       }
       tooltip = element.name
-      resourceUri = vscode.Uri.parse(`/${element.name}`)
+      iconPath = new vscode.ThemeIcon(
+        element.collapsibleState === collapsibleStateEnums.expanded
+          ? 'folder-opened'
+          : 'folder'
+      )
     }
     if (element.type === treeViewItemType.command) {
       collapsibleState = vscode.TreeItemCollapsibleState.None
       tooltip = element.commandLine
-      resourceUri = vscode.Uri.parse('.ps1')
+      iconPath = new vscode.ThemeIcon('file-code')
     }
 
     const result = {
       label,
       collapsibleState,
       tooltip,
-      resourceUri,
+      iconPath,
     }
     result.id = element.id
     result.contextValue = element.type

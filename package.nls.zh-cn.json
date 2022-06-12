@@ -1,11 +1,13 @@
 {
   "commandBookmark.activitybar.title": "命令书签",
 
+  "commandBookmark.command.category": "命令书签",
+
   "commandBookmark.command.addFolder": "添加文件夹",
   "commandBookmark.command.addCommand": "添加命令",
   "commandBookmark.command.refresh": "刷新",
-  "commandBookmark.command.Rename": "重命名",
-  "commandBookmark.command.Remove": "移除",
+  "commandBookmark.command.rename": "重命名",
+  "commandBookmark.command.remove": "移除",
   "commandBookmark.command.editCommand": "编辑命令",
   "commandBookmark.command.runCommand": "运行命令",
   "commandBookmark.command.export": "导出",

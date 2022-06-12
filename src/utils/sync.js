@@ -2,24 +2,22 @@ const { getChildren, checkData } = require('./storage')
 const vscode = require('vscode')
 const is = require('@sindresorhus/is')
 const fs = require('fs-extra')
-const path = require('path')
 const { extensionNameSpace } = require('./constant')
 const i18n = require('./i18n')
 
 async function exportData(context) {
-  const uris = await vscode.window.showOpenDialog({
-    canSelectFiles: false,
-    canSelectFolders: true,
-    canSelectMany: false,
+  const uri = await vscode.window.showSaveDialog({
+    filters: {
+      JSON: ['json'],
+    },
   })
-  if (!is.nullOrUndefined(uris) && uris.length > 0) {
-    const fsPath = path.resolve(uris[0].fsPath, `${extensionNameSpace}.json`)
+  if (!is.nullOrUndefined(uri)) {
     const data = getChildren(context)
-    await fs.outputJson(fsPath, data)
+    await fs.outputJson(uri.fsPath, data)
     vscode.window.showInformationMessage(
-      `${i18n.localize(
-        'commandBookmark.export.informationMessage.success'
-      )}${fsPath}`
+      `${i18n.localize('commandBookmark.export.informationMessage.success')}${
+        uri.fsPath
+      }`
     )
   }
 }
