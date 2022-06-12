@@ -6,7 +6,6 @@ const {
 } = require('./utils/storage')
 const { treeViewItemType, collapsibleStateEnums } = require('./utils/constant')
 const is = require('@sindresorhus/is')
-const path = require('path')
 class MainViewTreeDataProvider {
   constructor(context) {
     this.context = context
@@ -36,32 +35,16 @@ class MainViewTreeDataProvider {
         collapsibleState = vscode.TreeItemCollapsibleState.Collapsed
       }
       tooltip = element.name
-      iconPath = {
-        light: path.resolve(
-          __dirname,
-          `../resources/icon/light/${
-            element.collapsibleState === collapsibleStateEnums.expanded
-              ? 'openFolder'
-              : 'folder'
-          }.svg`
-        ),
-        dark: path.resolve(
-          __dirname,
-          `../resources/icon/dark/${
-            element.collapsibleState === collapsibleStateEnums.expanded
-              ? 'openFolder'
-              : 'folder'
-          }.svg`
-        ),
-      }
+      iconPath = new vscode.ThemeIcon(
+        element.collapsibleState === collapsibleStateEnums.expanded
+          ? 'folder-opened'
+          : 'folder'
+      )
     }
     if (element.type === treeViewItemType.command) {
       collapsibleState = vscode.TreeItemCollapsibleState.None
       tooltip = element.commandLine
-      iconPath = {
-        light: path.resolve(__dirname, '../resources/icon/light/file.svg'),
-        dark: path.resolve(__dirname, '../resources/icon/dark/file.svg'),
-      }
+      iconPath = new vscode.ThemeIcon('file-code')
     }
 
     const result = {

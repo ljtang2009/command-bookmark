@@ -1,11 +1,13 @@
 {
   "commandBookmark.activitybar.title": "Command Bookmark",
 
+  "commandBookmark.command.category": "Command Bookmark",
+
   "commandBookmark.command.addFolder": "Add Folder",
   "commandBookmark.command.addCommand": "Add Command",
   "commandBookmark.command.refresh": "Refresh",
-  "commandBookmark.command.Rename": "Rename",
-  "commandBookmark.command.Remove": "Remove",
+  "commandBookmark.command.rename": "Rename",
+  "commandBookmark.command.remove": "Remove",
   "commandBookmark.command.editCommand": "Edit Command",
   "commandBookmark.command.runCommand": "Run Command",
   "commandBookmark.command.export": "Export",
