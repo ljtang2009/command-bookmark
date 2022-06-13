@@ -1,15 +1,30 @@
 {
   "name": "command-bookmark",
   "displayName": "Command Bookmark",
-  "description": "A vscode extension to organize command lines.",
+  "description": "This extension helps developers to save command lines for future reference.It saves development time, which is especially for long command lines.",
   "version": "1.0.0",
   "publisher": "ljtang2009",
   "engines": {
     "vscode": "^1.67.0"
   },
+  "homepage": "https://github.com/ljtang2009/command-bookmark/blob/main/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ljtang2009/command-bookmark.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ljtang2009/command-bookmark/issues"
+  },
+  "license": "GPL-3.0",
   "categories": [
     "Visualization",
     "Other"
+  ],
+  "keywords": [
+    "command",
+    "bookmark",
+    "run",
+    "Chinese"
   ],
   "activationEvents": [
     "onView:commandBookmark",
@@ -20,6 +35,7 @@
     "onCommand:commandBookmark.import"
   ],
   "main": "./src/extension.js",
+  "icon": "resources/icon/logo.png",
   "contributes": {
     "capabilities": {
       "untrustedWorkspaces": {
@@ -193,7 +209,11 @@
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "node ./test/runTest.js"
+    "test": "node ./test/runTest.js",
+    "vscode:prepublish": "npm run package",
+    "webpack": "webpack --mode development",
+    "webpack-dev": "webpack --mode development --watch",
+    "package": "webpack --mode production --devtool hidden-source-map"
   },
   "devDependencies": {
     "@types/glob": "^7.2.0",
@@ -205,7 +225,9 @@
     "eslint-config-prettier": "^8.5.0",
     "glob": "^8.0.1",
     "mocha": "^9.2.2",
-    "typescript": "^4.6.4"
+    "typescript": "^4.6.4",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.9.2"
   },
   "dependencies": {
     "@sindresorhus/is": "^4.6.0",
